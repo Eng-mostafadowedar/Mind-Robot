@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Overview - MindRobot</title>
+  <meta name="color-scheme" content="dark light" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
+  <link rel="stylesheet" href="../master.css" />
+  <link rel="stylesheet" href="../header/header.css" />
+  <link rel="stylesheet" href="overview.css?v=420" /> 
+  
+  <script src="../header/header.js" defer></script>
+  <script src="overview.js?v=5.0" defer></script>
+</head>
+
+<body>
+  <!-- ✅ شاشة العد التنازلي (Overlay) ✅ -->
+  <div id="countdown-overlay" style="display: none;">
+    <div class="countdown-content">
+      <div class="countdown-icon"><i class="fas fa-robot"></i></div>
+      <div id="countdown-text" class="countdown-text">System Ready</div>
+      <div id="countdown-number" class="countdown-number">10</div>
+    </div>
+  </div>
+
+  <div id="app" class="app-shell">
+    <main class="workspace">
+      <section class="page-grid if-grid">
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <div class="panel-title" data-i18n="panelTitle">Patient Overview</div>
+              <div class="panel-hint" data-i18n="panelHint">Review captured patient identity and reported conditions.</div>
+            </div>
+          </div>
+          
+          <div class="if-body">
+            <div class="med-dashboard">
+              
+              <!-- القائمة على الشمال -->
+              <div class="dash-sidebar">
+                
+                <div class="sidebar-card patient-profile-card">
+                  <div class="profile-avatar" id="overviewPhotoSlot">
+                    <img id="overviewPhoto" alt="Patient" style="display:none;" />
+                    <div id="overviewPhotoPlaceholder" class="ov-no-photo"><i class="fas fa-user"></i></div>
+                  </div>
+                  <div class="profile-info">
+                    <div class="profile-name" id="ovName">Waiting...</div>
+                    <div class="profile-meta" id="ovAge">Age: -- years</div>
+                  </div>
+                </div>
+
+                <div class="sidebar-card all-sensors-card">
+                  <div class="sensor-item active" data-organ="heart">
+                    <div class="sensor-icon"><i class="fas fa-heartbeat"></i></div>
+                    <div class="sensor-details">
+                      <span class="sensor-label">Heart Rate</span>
+                      <span class="sensor-val" id="sensorBpm">-- BPM</span>
+                    </div>
+                  </div>
+
+                  <div class="sensor-item active" data-organ="oxygen">
+                    <div class="sensor-icon"><i class="fas fa-lungs"></i></div>
+                    <div class="sensor-details">
+                      <span class="sensor-label">Oxygen Level</span>
+                      <span class="sensor-val" id="sensorO2">-- SpO2 %</span>
+                    </div>
+                  </div>
+
+                  <div class="sensor-item" data-organ="thermal">
+                    <div class="sensor-icon"><i class="fas fa-thermometer-half"></i></div>
+                    <div class="sensor-details">
+                      <span class="sensor-label">Body Temp</span>
+                      <span class="sensor-val" id="sensorTemp">-- °C</span>
+                    </div>
+                  </div>
+
+                  <div class="sensor-item" data-organ="stress">
+                    <div class="sensor-icon"><i class="fas fa-brain"></i></div>
+                    <div class="sensor-details">
+                      <span class="sensor-label">Stress Level</span>
+                      <span class="sensor-val" id="sensorGsr">-- µS</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- كروت السنسورات الكبيرة في النص -->
+              <div class="vitals-side-cards">
+                
+                <div class="vital-side-box heart-box is-visible is-active">
+                  <div class="vital-side-icon"><i class="fas fa-heartbeat"></i></div>
+                  <div class="vital-side-info">
+                    <span class="vital-side-label">Heart Rate</span>
+                    <div class="vital-side-val"><span id="sideBpm">--</span> <small>BPM</small></div>
+                    <div class="vital-side-meta">
+                      <span class="vital-status success">Normal</span>
+                      <span class="vital-sub">Range: 60-100</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="vital-side-box o2-box is-visible is-active">
+                  <div class="vital-side-icon"><i class="fas fa-lungs"></i></div>
+                  <div class="vital-side-info">
+                    <span class="vital-side-label">Oxygen Level</span>
+                    <div class="vital-side-val"><span id="sideO2">--</span> <small>SpO2 %</small></div>
+                    <div class="vital-side-meta">
+                      <span class="vital-status success">Excellent</span>
+                      <span class="vital-sub">PI: 4.2%</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="vital-side-box thermal-box is-visible is-active">
+                  <div class="vital-side-icon"><i class="fas fa-thermometer-half"></i></div>
+                  <div class="vital-side-info">
+                    <span class="vital-side-label">Body Temp</span>
+                    <div class="vital-side-val"><span id="sideTemp">--</span> <small>°C</small></div>
+                    <div class="vital-side-meta">
+                      <span class="vital-status success">Normal</span>
+                      <span class="vital-sub">Trend: Stable</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="vital-side-box stress-box is-visible is-active">
+                  <div class="vital-side-icon"><i class="fas fa-brain"></i></div>
+                  <div class="vital-side-info">
+                    <span class="vital-side-label">Stress Level</span>
+                    <div class="vital-side-val"><span id="sideGsr">--</span> <small>µS</small></div>
+                    <div class="vital-side-meta">
+                      <span class="vital-status warn">Calm</span>
+                      <span class="vital-sub">HRV: 45ms</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- كرت الروبوت الذكي -->
+              <div class="ai-assistant-card">
+                
+                <div class="ai-logo-section">
+                  <div class="ai-logo-icon"><i class="fas fa-staff-snake"></i></div>
+                  <div class="ai-logo-text">
+                    <span>AI MEDICAL</span>
+                    <strong>ASSISTANT</strong>
+                  </div>
+                </div>
+
+                <div class="ai-robot-stage">
+                  <div class="clay-robot">
+                    <div class="clay-head">
+                      <div class="clay-ear left"></div>
+                      <div class="clay-ear right"></div>
+                      <div class="clay-face">
+                        <div class="clay-eyes">
+                          <div class="clay-eye left"></div>
+                          <div class="clay-eye right"></div>
+                        </div>
+                        <div class="clay-mouth"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="ai-chat-container">
+                  <div class="ai-chat-log" id="aiChatLog"></div>
+                  <div class="ai-chat-input-bar">
+                    <button class="ai-mic-btn" id="micBtn"><i class="fas fa-microphone"></i></button>
+                    <div class="ai-chat-status" id="chatStatus">Monitoring Sensors...</div>
+                  </div>
+                </div>
+
+              </div>
+              
+            </div>
+          </div>
+
+        </section>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

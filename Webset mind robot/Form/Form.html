@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Patient Registration - MindRobot</title>
+  <meta name="color-scheme" content="dark light" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/master.css?v=5" />
+  <link rel="stylesheet" href="/header/header.css" />
+  <link rel="stylesheet" href="/Form/Form.css?v=5" />
+  
+  <script src="/header/header.js" defer></script>
+  <script src="/Form/cities.js" defer></script>
+  <script src="/Form/Form.js" defer></script>
+</head>
+
+<body>
+  <div id="app" class="app-shell">
+
+    <main class="workspace">
+      <section class="page-grid if-grid">
+
+        <section class="panel">
+          <div class="panel-header">
+            <div>
+              <div class="panel-title" data-i18n="panelTitle">Patient Registration</div>
+              <div class="panel-hint panel-hint-left" data-i18n="panelHint">Capture patient identity and photo before clinical triage</div>
+            </div>
+          </div>
+          
+          <div class="if-body">
+            <div class="if-layout">
+
+              <div class="if-data">
+
+                <!-- Group 1 -->
+                <div class="if-group">
+                  <div class="if-group-label"><i class="fas fa-id-card"></i> <span data-i18n="grpDemographics">Demographics</span></div>
+                  <div class="if-group-fields">
+                    <label class="if-field">
+                      <span class="if-label" data-i18n="lblFullName">Full Name</span>
+                      <input type="text" id="patientName" data-i18n-ph="phFullName" placeholder="Enter full name" data-required="true" data-tts="اكتب اسمك الكامل. ثلاثي أو رباعي." />
+                      <span class="if-error" id="errName" data-i18n="errRequired">This field is required</span>
+                    </label>
+
+                    <div class="if-row">
+                      <label class="if-field if-half">
+                        <span class="if-label" data-i18n="lblDate">Date</span>
+                        <input type="text" id="patientDate" readonly data-required="true" />
+                        <span class="if-error" id="errDate" data-i18n="errRequired">This field is required</span>
+                      </label>
+                      <label class="if-field if-half">
+                        <span class="if-label" data-i18n="lblTime">Time</span>
+                        <input type="text" id="patientTime" readonly data-required="true" />
+                        <span class="if-error" id="errTime" data-i18n="errRequired">This field is required</span>
+                      </label>
+                    </div>
+
+                    <div class="if-row">
+                      <label class="if-field if-half">
+                        <span class="if-label" data-i18n="lblAge">Age</span>
+                        <input type="number" id="patientAge" placeholder="Age" min="0" max="150" data-required="true" data-tts="اكتب عمرك بالسنين." />
+                        <span class="if-error" id="errAge" data-i18n="errRequired">This field is required</span>
+                      </label>
+                      <div class="if-field if-half">
+                        <span class="if-label" data-i18n="lblGender">Gender</span>
+                        <div class="if-dropdown" id="genderDropdown">
+                          <button type="button" class="if-dropdown-trigger" id="genderTrigger" data-required="true" data-tts="اختر الجنس. ذكر أو أنثى." >
+                            <span id="genderSelected" data-i18n="phGender">Select gender</span>
+                            <i class="fas fa-chevron-down if-dropdown-arrow"></i>
+                          </button>
+                          <div class="if-dropdown-menu" id="genderMenu">
+                            <div class="if-dropdown-item" data-value="male"><i class="fas fa-mars"></i> <span data-i18n="genderMale">Male</span></div>
+                            <div class="if-dropdown-item" data-value="female"><i class="fas fa-venus"></i> <span data-i18n="genderFemale">Female</span></div>
+                            <div class="if-dropdown-item" data-value="other"><i class="fas fa-genderless"></i> <span data-i18n="genderOther">Other</span></div>
+                          </div>
+                        </div>
+                        <input type="hidden" id="patientGender" value="" />
+                        <span class="if-error" id="errGender" data-i18n="errRequired">This field is required</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Group 2 -->
+                <div class="if-group">
+                  <div class="if-group-label"><i class="fas fa-heartbeat"></i> <span data-i18n="grpPhysical">Physical &amp; Vitals</span></div>
+                  <div class="if-group-fields">
+                    <div class="if-row">
+                      <label class="if-field if-half">
+                        <span class="if-label" data-i18n="lblWeight">Weight (kg)</span>
+                        <input type="number" id="patientWeight" placeholder="70" min="0" data-required="true" data-tts="اكتب وزنك بالكيلو جرام." />
+                        <span class="if-error" id="errWeight" data-i18n="errRequired">This field is required</span>
+                      </label>
+                      <label class="if-field if-half">
+                        <span class="if-label" data-i18n="lblHeight">Height (cm)</span>
+                        <input type="number" id="patientHeight" placeholder="170" min="0" data-required="true" data-tts="اكتب طولك بالسنتيمتر." />
+                        <span class="if-error" id="errHeight" data-i18n="errRequired">This field is required</span>
+                      </label>
+                    </div>
+
+                    <div class="if-row">
+                      <div class="if-field if-half">
+                        <span class="if-label" data-i18n="lblBlood">Blood Type</span>
+                        <div class="if-dropdown" id="bloodTypeDropdown">
+                          <button type="button" class="if-dropdown-trigger" id="bloodTypeTrigger" data-required="true" data-tts="اختر فصيلة دمك. لو مش عارفها اختر لا أعرف." >
+                            <span id="bloodTypeSelected" data-i18n="phBlood">Select blood type</span>
+                            <i class="fas fa-chevron-down if-dropdown-arrow"></i>
+                          </button>
+                          <div class="if-dropdown-menu" id="bloodTypeMenu">
+                            <div class="if-dropdown-item" data-value="A+"><i class="fas fa-droplet if-blood-icon"></i> A+</div>
+                            <div class="if-dropdown-item" data-value="A-"><i class="fas fa-droplet if-blood-icon"></i> A-</div>
+                            <div class="if-dropdown-item" data-value="B+"><i class="fas fa-droplet if-blood-icon"></i> B+</div>
+                            <div class="if-dropdown-item" data-value="B-"><i class="fas fa-droplet if-blood-icon"></i> B-</div>
+                            <div class="if-dropdown-item" data-value="AB+"><i class="fas fa-droplet if-blood-icon"></i> AB+</div>
+                            <div class="if-dropdown-item" data-value="AB-"><i class="fas fa-droplet if-blood-icon"></i> AB-</div>
+                            <div class="if-dropdown-item" data-value="O+"><i class="fas fa-droplet if-blood-icon"></i> O+</div>
+                            <div class="if-dropdown-item" data-value="O-"><i class="fas fa-droplet if-blood-icon"></i> O-</div>
+                            <div class="if-dropdown-item" data-value="unknown"><i class="fas fa-question" style="color:var(--muted);"></i> <span data-i18n="bloodUnknown">Unknown</span></div>
+                          </div>
+                        </div>
+                        <input type="hidden" id="patientBloodType" value="" />
+                        <span class="if-error" id="errBlood" data-i18n="errRequired">This field is required</span>
+                      </div>
+                      <label class="if-field if-half">
+                        <span class="if-label" data-i18n="lblOccupation">Occupation</span>
+                        <input type="text" id="patientOccupation" data-i18n-ph="phOccupation" placeholder="e.g. Engineer" data-required="true" data-tts="اكتب مهنتك." />
+                        <span class="if-error" id="errOccupation" data-i18n="errRequired">This field is required</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Group 3 -->
+                <div class="if-group">
+                  <div class="if-group-label"><i class="fas fa-address-book"></i> <span data-i18n="grpContact">Contact Information</span></div>
+                  <div class="if-group-fields">
+                    <div class="if-row">
+                      <label class="if-field if-half">
+                        <span class="if-label" data-i18n="lblPhone">Phone Number</span>
+                        <div class="if-input-group">
+                          <span class="if-addon">+20</span>
+                          <input type="tel" id="patientPhone" placeholder="10xxxxxxxxx" data-required="true" data-tts="اكتب رقم هاتفك. عشرة أرقام بعد رمز الدولة." />
+                        </div>
+                        <span class="if-error" id="errPhone" data-i18n="errShort">Required</span>
+                      </label>
+                      <label class="if-field if-half">
+                        <span class="if-label" data-i18n="lblEmail">Email</span>
+                        <div class="if-input-group">
+                          <input type="text" id="patientEmail" placeholder="email account" data-required="true" data-tts="اكتب إيميلك الجي ميل. بس اكتب الجزء اللي قبل علامة الاترب." />
+                          <span class="if-addon">@gmail.com</span>
+                        </div>
+                        <span class="if-error" id="errEmail" data-i18n="errShort">Required</span>
+                      </label>
+                    </div>
+
+                    <div class="if-row">
+                      <label class="if-field if-half">
+                        <span class="if-label" data-i18n="lblCity">City</span>
+                        <div class="if-dropdown" id="cityDropdown"><button type="button" class="if-dropdown-trigger" id="cityTrigger" data-required="true" data-tts="اختر المحافظة أولاً، ثم اختر المدينة." ><span id="citySelected" data-i18n="phGovFirst">Select governorate first</span><i class="fas fa-chevron-down if-dropdown-arrow"></i></button><div class="if-dropdown-menu" id="cityMenu" style="max-height:220px;"></div></div><input type="hidden" id="patientCity" value="" />
+                        <span class="if-error" id="errCity" data-i18n="errShort">Required</span>
+                      </label>
+                      <div class="if-field if-half">
+                        <span class="if-label" data-i18n="lblGovernorate">Governorate</span>
+                        <div class="if-dropdown" id="govDropdown">
+                          <button type="button" class="if-dropdown-trigger" id="govTrigger" data-required="true" data-tts="اختر المحافظة اللي بتقيم فيها." >
+                            <span id="govSelected" data-i18n="phGov">Select governorate</span>
+                            <i class="fas fa-chevron-down if-dropdown-arrow"></i>
+                          </button>
+                          <div class="if-dropdown-menu" id="govMenu" style="max-height:220px;">
+                            <div class="if-dropdown-item" data-value="القاهرة"><i class="fas fa-map-pin"></i> القاهرة</div>
+                            <div class="if-dropdown-item" data-value="الجيزة"><i class="fas fa-map-pin"></i> الجيزة</div>
+                            <div class="if-dropdown-item" data-value="الإسكندرية"><i class="fas fa-map-pin"></i> الإسكندرية</div>
+                            <div class="if-dropdown-item" data-value="الدقهلية"><i class="fas fa-map-pin"></i> الدقهلية</div>
+                            <div class="if-dropdown-item" data-value="الشرقية"><i class="fas fa-map-pin"></i> الشرقية</div>
+                            <div class="if-dropdown-item" data-value="القليوبية"><i class="fas fa-map-pin"></i> القليوبية</div>
+                            <div class="if-dropdown-item" data-value="المنوفية"><i class="fas fa-map-pin"></i> المنوفية</div>
+                            <div class="if-dropdown-item" data-value="الغربية"><i class="fas fa-map-pin"></i> الغربية</div>
+                            <div class="if-dropdown-item" data-value="كفر الشيخ"><i class="fas fa-map-pin"></i> كفر الشيخ</div>
+                            <div class="if-dropdown-item" data-value="البحيرة"><i class="fas fa-map-pin"></i> البحيرة</div>
+                            <div class="if-dropdown-item" data-value="دمياط"><i class="fas fa-map-pin"></i> دمياط</div>
+                            <div class="if-dropdown-item" data-value="بورسعيد"><i class="fas fa-map-pin"></i> بورسعيد</div>
+                            <div class="if-dropdown-item" data-value="الإسماعيلية"><i class="fas fa-map-pin"></i> الإسماعيلية</div>
+                            <div class="if-dropdown-item" data-value="السويس"><i class="fas fa-map-pin"></i> السويس</div>
+                            <div class="if-dropdown-item" data-value="شمال سيناء"><i class="fas fa-map-pin"></i> شمال سيناء</div>
+                            <div class="if-dropdown-item" data-value="جنوب سيناء"><i class="fas fa-map-pin"></i> جنوب سيناء</div>
+                            <div class="if-dropdown-item" data-value="البحر الأحمر"><i class="fas fa-map-pin"></i> البحر الأحمر</div>
+                            <div class="if-dropdown-item" data-value="الوادي الجديد"><i class="fas fa-map-pin"></i> الوادي الجديد</div>
+                            <div class="if-dropdown-item" data-value="مطروح"><i class="fas fa-map-pin"></i> مطروح</div>
+                            <div class="if-dropdown-item" data-value="الفيوم"><i class="fas fa-map-pin"></i> الفيوم</div>
+                            <div class="if-dropdown-item" data-value="بني سويف"><i class="fas fa-map-pin"></i> بني سويف</div>
+                            <div class="if-dropdown-item" data-value="المنيا"><i class="fas fa-map-pin"></i> المنيا</div>
+                            <div class="if-dropdown-item" data-value="أسيوط"><i class="fas fa-map-pin"></i> أسيوط</div>
+                            <div class="if-dropdown-item" data-value="سوهاج"><i class="fas fa-map-pin"></i> سوهاج</div>
+                            <div class="if-dropdown-item" data-value="قنا"><i class="fas fa-map-pin"></i> قنا</div>
+                            <div class="if-dropdown-item" data-value="الأقصر"><i class="fas fa-map-pin"></i> الأقصر</div>
+                            <div class="if-dropdown-item" data-value="أسوان"><i class="fas fa-map-pin"></i> أسوان</div>
+                          </div>
+                        </div>
+                        <input type="hidden" id="patientGovernorate" value="" />
+                        <span class="if-error" id="errGov" data-i18n="errShort">Required</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- كاميرا الراسبيري باي -->
+              <div class="if-cam-col">
+                <div class="if-cam-title" data-i18n="camTitle">RPI Camera Capture</div>
+
+                <div class="if-cam-frame" id="cameraFrame">
+                  <div class="if-cam-overlay">
+                    <span class="if-rec-dot"></span>
+                    <span class="if-live-txt" data-i18n="camLive">LIVE</span>
+                    <span class="if-cam-src">RPI CAM</span>
+                  </div>
+                  
+                  <div class="if-cam-datetime" id="camDateTime"></div>
+                  
+                  <div class="if-face-box" id="faceBox"></div>
+                  <div class="if-cam-prompt" id="camPrompt">Initializing camera...</div>
+                  <div class="if-countdown" id="autoCountdown"></div>
+                  
+                  <div id="cameraVideo"></div>
+                  <div class="if-cam-wait" id="cameraWaiting">
+                    <i class="fas fa-video-slash"></i>
+                    <span data-i18n="camWaitText">Waiting for Camera...</span>
+                    <span class="if-cam-hint" data-i18n="camWaitHint">Connect RPI Camera or allow webcam</span>
+                  </div>
+                  <canvas id="capturedCanvas" style="display:none;"></canvas>
+                  <canvas id="detectCanvas" style="display:none;"></canvas>
+                  
+                  <div class="if-captured" id="capturedPreview">
+                    <img id="capturedImage" alt="Patient Photo" />
+                    <div class="if-captured-over">
+                      <button class="if-retake-btn" id="retakeBtn" type="button">
+                        <i class="fas fa-redo"></i> <span data-i18n="btnRetake">Retake</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="if-cam-footer">
+                  <div class="if-cam-info">
+                    <i class="fas fa-camera if-cam-info-icon"></i>
+                    <div class="if-cam-info-text">
+                      <span class="if-cam-info-title" data-i18n="camInfoTitle">Profile Photo</span>
+                      <span class="if-cam-info-desc" data-i18n="camInfoDesc">Auto-capture when face is steady</span>
+                    </div>
+                  </div>
+                  <div class="if-photo-slot" id="photoSlot">
+                    <div class="if-photo-ph" id="photoPlaceholder"><i class="fas fa-user"></i></div>
+                    <img id="profilePhoto" alt="Patient" style="display:none;" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="if-next-section">
+            <div class="if-next-wrapper if-btns-row">
+              <a href="/Home/Home.html" class="btn btn-secondary if-home-btn" id="homeBtn">
+                <span data-i18n="btnHome">Home</span>
+              </a>
+              <button type="button" class="btn btn-primary if-next-btn" id="nextBtn" data-tts="بعد ما تكتب كل بياناتك اضغط هنا عشان نكمل." >
+                <span class="if-next-text" data-i18n="btnNext">NEXT</span>
+              </button>
+              <div class="if-next-hint" style="display:none" data-i18n="nextHint">Complete all fields to proceed</div>
+            </div>
+          </div>
+
+        </section>
+
+      </section>
+    </main>
+  </div>
+
+  <script>
+    var formPageI18n = {
+      en: {
+        panelTitle: 'Patient Registration',
+        btnHome: 'Home',
+        panelHint: 'Capture patient identity and photo before clinical triage',
+        grpDemographics: 'Demographics',
+        lblFullName: 'Full Name', phFullName: 'Enter full name',
+        lblDate: 'Date', lblTime: 'Time',
+        lblAge: 'Age', lblGender: 'Gender', phGender: 'Select gender',
+        genderMale: 'Male', genderFemale: 'Female', genderOther: 'Other',
+        grpPhysical: 'Physical & Vitals',
+        lblWeight: 'Weight (kg)', lblHeight: 'Height (cm)',
+        lblBlood: 'Blood Type', phBlood: 'Select blood type', bloodUnknown: 'Unknown',
+        lblOccupation: 'Occupation', phOccupation: 'e.g. Engineer',
+        grpContact: 'Contact Information',
+        lblPhone: 'Phone Number', lblEmail: 'Email',
+        lblCity: 'City', phCity: 'City name', phGovFirst: 'Select governorate first',
+        lblGovernorate: 'Governorate', phGov: 'Select governorate',
+        camTitle: 'RPI Camera Capture',
+        camInfoTitle: 'Profile Photo',
+        camInfoDesc: 'Auto-capture when face is steady',
+        btnNext: 'NEXT',
+        camLive: 'LIVE',
+        camWaitText: 'Waiting for Camera...',
+        camWaitHint: 'Connect RPI Camera or allow webcam',
+        btnRetake: 'Retake',
+        nextHint: 'Complete all fields to proceed',
+        errRequired: 'This field is required',
+        errShort: 'Required'
+      },
+      ar: {
+        panelTitle: 'تسجيل المريض',
+        btnHome: 'الرئيسية',
+        panelHint: 'تسجيل هوية المريض وصورته قبل الفرز الطبي',
+        grpDemographics: 'البيانات الديموغرافية',
+        lblFullName: 'الاسم الكامل', phFullName: 'أدخل الاسم الكامل',
+        lblDate: 'التاريخ', lblTime: 'الوقت',
+        lblAge: 'العمر', lblGender: 'الجنس', phGender: 'اختر الجنس',
+        genderMale: 'ذكر', genderFemale: 'أنثى', genderOther: 'آخر',
+        grpPhysical: 'القياسات الجسدية والحيوية',
+        lblWeight: 'الوزن (كجم)', lblHeight: 'الطول (سم)',
+        lblBlood: 'فصيلة الدم', phBlood: 'اختر فصيلة الدم', bloodUnknown: 'لا أعرف',
+        lblOccupation: 'المهنة', phOccupation: 'مثال: مهندس',
+        grpContact: 'معلومات الاتصال',
+        lblPhone: 'رقم الهاتف', lblEmail: 'الإيميل',
+        lblCity: 'المدينة', phCity: 'اسم المدينة', phGovFirst: 'اختر المحافظة أولاً',
+        lblGovernorate: 'المحافظة', phGov: 'اختر المحافظة',
+        camTitle: 'التقاط كاميرا RPI',
+        camInfoTitle: 'صورة شخصية',
+        camInfoDesc: 'التقاط تلقائي عند ثبات الوجه',
+        btnNext: 'التالي',
+        camLive: 'مباشر',
+        camWaitText: 'في انتظار الكاميرا...',
+        camWaitHint: 'قم بتوصيل كاميرا RPI أو اسمح بالوصول للكاميرا',
+        btnRetake: 'إعادة التقاط',
+        nextHint: 'أكمل جميع الحقول للمتابعة',
+        errRequired: 'هذا الحقل مطلوب',
+        errShort: 'مطلوب'
+      }
+    };
+
+    var currentFormLang = localStorage.getItem('mindrobot_lang') || 'en';
+
+    function applyFormLang(lang) {
+      var dict = formPageI18n[lang];
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (dict[key]) el.textContent = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-ph]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-ph');
+        if (dict[key]) el.placeholder = dict[key];
+      });
+    }
+
+    applyFormLang(currentFormLang);
+
+    document.addEventListener('mindrobot:langchange', function (e) {
+      applyFormLang(e.detail.lang);
+    });
+
+    // ═══════════════════════════════════════
+    // ✅ Edge TTS - صوت إرشادي لكل خانة في الفورم
+    // ═══════════════════════════════════════
+    var formTTScache = {};  // cache: { text: audioUrl }
+    var formTTSbusy = false;
+    var formTTSaudio = null;
+
+    // ✅ تحميل كل الأصوات مسبقاً عشان يكونوا جاهزين فوراً
+    function preloadFormTTS() {
+      var texts = [];
+      // صفحة الترحيب
+      texts.push('صفحة تسجيل البيانات الشخصية. يرجى إدخال بياناتك.');
+      // كل الخانات
+      document.querySelectorAll('[data-tts]').forEach(function(el) {
+        var msg = el.getAttribute('data-tts');
+        if (msg && texts.indexOf(msg) === -1) texts.push(msg);
+      });
+      // بعت كلهم للسرفر دفعة واحدة عشان يحملوا مع بعض
+      texts.forEach(function(text) {
+        fetch('/tts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: text, lang: 'ar' })
+        })
+        .then(function(r) {
+          if (!r.ok) return;
+          return r.blob();
+        })
+        .then(function(blob) {
+          if (!blob) return;
+          formTTScache[text] = URL.createObjectURL(blob);
+        })
+        .catch(function() {});
+      });
+    }
+
+    function playFormTTS(text) {
+      if (formTTSbusy) return;
+      formTTSbusy = true;
+
+      // لو الصوت محمل مسبقاً → شغلو فوراً من غير تاخير
+      if (formTTScache[text]) {
+        formTTSaudio = new Audio(formTTScache[text]);
+        formTTSaudio.addEventListener('ended', function() { formTTSbusy = false; });
+        formTTSaudio.addEventListener('error', function() { formTTSbusy = false; });
+        formTTSaudio.play();
+        return;
+      }
+
+      // لو مش محمل → حمله دلوقتي
+      fetch('/tts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: text, lang: 'ar' })
+      })
+      .then(function(r) {
+        if (!r.ok) { formTTSbusy = false; return; }
+        return r.blob();
+      })
+      .then(function(blob) {
+        if (!blob) { formTTSbusy = false; return; }
+        var url = URL.createObjectURL(blob);
+        formTTScache[text] = url;
+        formTTSaudio = new Audio(url);
+        formTTSaudio.addEventListener('ended', function() { formTTSbusy = false; });
+        formTTSaudio.addEventListener('error', function() { formTTSbusy = false; });
+        formTTSaudio.play();
+      })
+      .catch(function() { formTTSbusy = false; });
+    }
+
+    // ✅ أول ما الصفحة تفتح → الروبوت يشرح الصفحة
+    window.addEventListener('load', function() {
+      function tryPlayWelcome() {
+        if (document.visibilityState !== 'visible') {
+          setTimeout(tryPlayWelcome, 500); return;
+        }
+        fetch('/api/sensor_status')
+          .then(function() { return; })
+          .catch(function() { return; });
+        var welcomeText = 'صفحة تسجيل البيانات الشخصية. يرجى إدخال بياناتك.';
+        // لو محمل → شغلو. لو لا → انتظر شوية وبعدين جرب تاني
+        if (formTTScache[welcomeText]) {
+          playFormTTS(welcomeText);
+        } else {
+          setTimeout(function() {
+            playFormTTS(welcomeText);
+          }, 3000);
+        }
+      }
+      tryPlayWelcome();
+    });
+
+    // ✅ تحميل الأصوات مسبقاً بعد ما الصفحة تحمل
+    preloadFormTTS();
+
+    // ✅ كل خانة لما المريض يدوس عليها → الصوت يشرحها فوراً
+    document.querySelectorAll('[data-tts]').forEach(function(el) {
+      el.addEventListener('focus', function() {
+        var msg = el.getAttribute('data-tts');
+        if (msg) playFormTTS(msg);
+      });
+      el.addEventListener('click', function() {
+        var msg = el.getAttribute('data-tts');
+        if (msg) playFormTTS(msg);
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+fastapi==0.136.1
+uvicorn==0.47.0
+smbus2==0.6.1
+edge-tts==7.2.8
+openai==2.37.0
+pydantic==2.13.4
+opencv-python-headless==4.8.1.78
+RPi.GPIO==0.7.1
+DFRobot_BloodOxygen_S==1.0.2
+numpy==1.24.4
+python-dotenv==1.0.1
+Adafruit-ADS1x15==3.4.0

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Medical Record - MindRobot</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link rel="stylesheet" href="/master.css?v=6" />
+<link rel="stylesheet" href="/header/header.css?v=2" />
+<script src="/header/header.js?v=2" defer></script>
+<link rel="stylesheet" href="/MedicalRecord/MedicalRecord.css?v=6" />
+<script src="/MedicalRecord/MedicalRecord.js?v=6" defer></script>
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <div id="header-container"></div>
+    <main class="workspace">
+      <div class="mr-container">
+
+        <!-- Timer -->
+        <div class="mr-timer">
+          <div class="mr-timer-info">
+            <span class="mr-timer-label"><i class="fas fa-clock"></i> <span data-i18n="timeRemaining">Time Remaining</span></span>
+            <span class="mr-timer-value" id="timerValue">2:00</span>
+          </div>
+          <div class="mr-timer-bar">
+            <div class="mr-timer-fill" id="timerFill"></div>
+          </div>
+        </div>
+
+        <!-- Top Grid 2x2 -->
+        <div class="mr-grid-top">
+
+          <!-- Chronic Diseases -->
+          <div class="mr-card" data-required="true" data-category-key="chronicDiseases" data-tts="اختار الأمراض المزمنة اللي عندك. لو مش عندك أي مرض مزمن اختر لا يوجد.">
+            <div class="mr-card-header">
+              <i class="fas fa-heartbeat"></i>
+              <span data-i18n="catChronic">Chronic Diseases</span>
+              <span class="mr-card-count">0</span>
+              <i class="fas fa-chevron-down mr-card-arrow"></i>
+            </div>
+            <div class="mr-card-body">
+              <div class="mr-chips">
+                <div class="mr-chip" data-value="diabetes" data-i18n="chipDiabetes">Diabetes</div>
+                <div class="mr-chip" data-value="hypertension" data-i18n="chipHypertension">Hypertension</div>
+                <div class="mr-chip" data-value="heartDisease" data-i18n="chipHeartDisease">Heart Disease</div>
+                <div class="mr-chip" data-value="asthma" data-i18n="chipAsthma">Asthma</div>
+                <div class="mr-chip" data-value="kidneyDisease" data-i18n="chipKidney">Kidney Disease</div>
+                <div class="mr-chip" data-value="liverDisease" data-i18n="chipLiver">Liver Disease</div>
+                <div class="mr-chip" data-value="thyroid" data-i18n="chipThyroid">Thyroid Disorder</div>
+                <div class="mr-chip" data-value="cancer" data-i18n="chipCancer">Cancer</div>
+                <div class="mr-chip" data-value="epilepsy" data-i18n="chipEpilepsy">Epilepsy</div>
+                <div class="mr-chip" data-value="anemia" data-i18n="chipAnemia">Anemia</div>
+                <div class="mr-chip mr-chip-unsure" data-unsure="true" data-value="none" data-i18n="chipNone">None</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Current Medications -->
+          <div class="mr-card" data-required="true" data-category-key="medications" data-tts="اختار الأدوية اللي بتاخدها دلوقتي. لو مابتاخدش أي أدوية اختر لا يوجد.">
+            <div class="mr-card-header">
+              <i class="fas fa-pills"></i>
+              <span data-i18n="catMeds">Current Medications</span>
+              <span class="mr-card-count">0</span>
+              <i class="fas fa-chevron-down mr-card-arrow"></i>
+            </div>
+            <div class="mr-card-body">
+              <div class="mr-chips">
+                <div class="mr-chip" data-value="bloodPressureMeds" data-i18n="chipBPMeds">Blood Pressure Meds</div>
+                <div class="mr-chip" data-value="diabetesMeds" data-i18n="chipDiabetesMeds">Diabetes Meds</div>
+                <div class="mr-chip" data-value="bloodThinners" data-i18n="chipBloodThinners">Blood Thinners</div>
+                <div class="mr-chip" data-value="painRelievers" data-i18n="chipPainRelievers">Pain Relievers</div>
+                <div class="mr-chip" data-value="antibiotics" data-i18n="chipAntibiotics">Antibiotics</div>
+                <div class="mr-chip" data-value="antidepressants" data-i18n="chipAntidepressants">Antidepressants</div>
+                <div class="mr-chip" data-value="cholesterolMeds" data-i18n="chipCholesterol">Cholesterol Meds</div>
+                <div class="mr-chip" data-value="inhalers" data-i18n="chipInhalers">Inhalers</div>
+                <div class="mr-chip mr-chip-unsure" data-unsure="true" data-value="none" data-i18n="chipNone">None</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Allergies -->
+          <div class="mr-card" data-required="true" data-category-key="allergies" data-tts="اختار الحساسيات اللي عندك. لو مفيش أي حساسية اختر لا يوجد.">
+            <div class="mr-card-header">
+              <i class="fas fa-allergies"></i>
+              <span data-i18n="catAllergies">Allergies</span>
+              <span class="mr-card-count">0</span>
+              <i class="fas fa-chevron-down mr-card-arrow"></i>
+            </div>
+            <div class="mr-card-body">
+              <div class="mr-chips">
+                <div class="mr-chip" data-value="penicillin" data-i18n="chipPenicillin">Penicillin</div>
+                <div class="mr-chip" data-value="aspirin" data-i18n="chipAspirin">Aspirin</div>
+                <div class="mr-chip" data-value="sulfa" data-i18n="chipSulfa">Sulfa Drugs</div>
+                <div class="mr-chip" data-value="latex" data-i18n="chipLatex">Latex</div>
+                <div class="mr-chip" data-value="dust" data-i18n="chipDust">Dust</div>
+                <div class="mr-chip" data-value="pollen" data-i18n="chipPollen">Pollen</div>
+                <div class="mr-chip" data-value="foodAllergy" data-i18n="chipFoodAllergy">Food Allergy</div>
+                <div class="mr-chip" data-value="insectBites" data-i18n="chipInsectBites">Insect Bites</div>
+                <div class="mr-chip mr-chip-unsure" data-unsure="true" data-value="none" data-i18n="chipNone">None</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Surgical History -->
+          <div class="mr-card" data-required="true" data-category-key="surgicalHistory" data-tts="اختار العمليات الجراحية اللي عملتها قبل كدا. لو مفيش اختر لا يوجد.">
+            <div class="mr-card-header">
+              <i class="fas fa-syringe"></i>
+              <span data-i18n="catSurgery">Surgical History</span>
+              <span class="mr-card-count">0</span>
+              <i class="fas fa-chevron-down mr-card-arrow"></i>
+            </div>
+            <div class="mr-card-body">
+              <div class="mr-chips">
+                <div class="mr-chip" data-value="appendectomy" data-i18n="chipAppendectomy">Appendectomy</div>
+                <div class="mr-chip" data-value="csection" data-i18n="chipCSection">C-Section</div>
+                <div class="mr-chip" data-value="heartSurgery" data-i18n="chipHeartSurgery">Heart Surgery</div>
+                <div class="mr-chip" data-value="jointReplacement" data-i18n="chipJoint">Joint Replacement</div>
+                <div class="mr-chip" data-value="gallbladder" data-i18n="chipGallbladder">Gallbladder</div>
+                <div class="mr-chip" data-value="eyeSurgery" data-i18n="chipEyeSurgery">Eye Surgery</div>
+                <div class="mr-chip" data-value="hernia" data-i18n="chipHernia">Hernia</div>
+                <div class="mr-chip" data-value="tonsillectomy" data-i18n="chipTonsils">Tonsillectomy</div>
+                <div class="mr-chip" data-value="familyMentalHealth" data-i18n="chipFMental">Mental Health</div>
+                <div class="mr-chip" data-value="familyBloodDisorders" data-i18n="chipFBlood">Blood Disorders</div>
+                <div class="mr-chip mr-chip-unsure" data-unsure="true" data-value="none" data-i18n="chipNone">None</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottom Grid 3 cols -->
+        <div class="mr-grid-bottom">
+
+          <!-- Family History -->
+          <div class="mr-card" data-required="true" data-category-key="familyHistory" data-tts="اختار الأمراض اللي موجودة في عائلتك. يعني أمراض الأب أو الأم أو الإخوة. لو مفيش اختر لا يوجد.">
+            <div class="mr-card-header">
+              <i class="fas fa-people-group"></i>
+              <span data-i18n="catFamily">Family History</span>
+              <span class="mr-card-count">0</span>
+              <i class="fas fa-chevron-down mr-card-arrow"></i>
+            </div>
+            <div class="mr-card-body">
+              <div class="mr-chips">
+                <div class="mr-chip" data-value="familyDiabetes" data-i18n="chipFDiabetes">Diabetes</div>
+                <div class="mr-chip" data-value="familyHypertension" data-i18n="chipFHypertension">Hypertension</div>
+                <div class="mr-chip" data-value="familyHeart" data-i18n="chipFHeart">Heart Disease</div>
+                <div class="mr-chip" data-value="familyCancer" data-i18n="chipFCancer">Cancer</div>
+                <div class="mr-chip" data-value="familyAsthma" data-i18n="chipFAsthma">Asthma</div>
+                <div class="mr-chip" data-value="familyGenetic" data-i18n="chipFGenetic">Genetic Disorders</div>
+                <div class="mr-chip mr-chip-unsure" data-unsure="true" data-value="none" data-i18n="chipNone">None</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Daily Habits -->
+          <div class="mr-card" data-required="true" data-category-key="habits" data-tts="اختار العادات اليومية بتاعتك. سواء صحية أو غير صحية.">
+            <div class="mr-card-header">
+              <i class="fas fa-person-running"></i>
+              <span data-i18n="catHabits">Daily Habits</span>
+              <span class="mr-card-count">0</span>
+              <i class="fas fa-chevron-down mr-card-arrow"></i>
+            </div>
+            <div class="mr-card-body">
+              <div class="mr-chips">
+                <div class="mr-chip" data-value="smoking" data-i18n="chipSmoking">Smoking</div>
+                <div class="mr-chip" data-value="alcohol" data-i18n="chipAlcohol">Alcohol</div>
+                <div class="mr-chip" data-value="exercise" data-i18n="chipExercise">Regular Exercise</div>
+                <div class="mr-chip" data-value="sedentary" data-i18n="chipSedentary">Sedentary Lifestyle</div>
+                <div class="mr-chip" data-value="healthyDiet" data-i18n="chipHealthyDiet">Healthy Diet</div>
+                <div class="mr-chip" data-value="poorSleep" data-i18n="chipPoorSleep">Poor Sleep</div>
+                <div class="mr-chip" data-value="caffeine" data-i18n="chipCaffeine">High Caffeine</div>
+                <div class="mr-chip mr-chip-unsure" data-unsure="true" data-value="none" data-i18n="chipNone">None</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Current Symptoms -->
+          <div class="mr-card" data-required="true" data-category-key="currentSymptoms" data-tts="اختار الأعراض اللي بتشعر بيها دلوقتي. يعني أي حاجة بتضايقك حالياً. لو مفيش اختر لا يوجد.">
+            <div class="mr-card-header">
+              <i class="fas fa-stethoscope"></i>
+              <span data-i18n="catSymptoms">Current Symptoms</span>
+              <span class="mr-card-count">0</span>
+              <i class="fas fa-chevron-down mr-card-arrow"></i>
+            </div>
+            <div class="mr-card-body">
+              <div class="mr-chips">
+                <div class="mr-chip" data-value="headache" data-i18n="chipHeadache">Headache</div>
+                <div class="mr-chip" data-value="chestPain" data-i18n="chipChestPain">Chest Pain</div>
+                <div class="mr-chip" data-value="shortnessOfBreath" data-i18n="chipBreath">Shortness of Breath</div>
+                <div class="mr-chip" data-value="dizziness" data-i18n="chipDizziness">Dizziness</div>
+                <div class="mr-chip" data-value="fatigue" data-i18n="chipFatigue">Chronic Fatigue</div>
+                <div class="mr-chip" data-value="jointPain" data-i18n="chipJointPain">Joint Pain</div>
+                <div class="mr-chip" data-value="backPain" data-i18n="chipBackPain">Back Pain</div>
+                <div class="mr-chip" data-value="visionProblems" data-i18n="chipVision">Vision Problems</div>
+                <div class="mr-chip" data-value="nausea" data-i18n="chipNausea">Nausea</div>
+                <div class="mr-chip" data-value="numbness" data-i18n="chipNumbness">Numbness</div>
+                <div class="mr-chip mr-chip-unsure" data-unsure="true" data-value="none" data-i18n="chipNone">None</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Buttons -->
+        <div class="mr-btns-row">
+          <button class="mr-btn mr-btn-next" id="btnNext" data-tts="بعد ما تختار من كل الأقسام اضغط هنا عشان نكمل.">
+            <span data-i18n="btnNext">NEXT</span>
+          </button>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- i18n -->
+  <script>
+    var mrI18n = {
+      en: {
+        catChronic: 'Chronic Diseases', catMeds: 'Current Medications', catAllergies: 'Allergies',
+        catSurgery: 'Surgical History', catFamily: 'Family History', catHabits: 'Daily Habits', catSymptoms: 'Current Symptoms',
+        chipDiabetes: 'Diabetes', chipHypertension: 'Hypertension', chipHeartDisease: 'Heart Disease',
+        chipAsthma: 'Asthma', chipKidney: 'Kidney Disease', chipLiver: 'Liver Disease',
+        chipThyroid: 'Thyroid Disorder', chipCancer: 'Cancer', chipEpilepsy: 'Epilepsy', chipAnemia: 'Anemia',
+        chipBPMeds: 'Blood Pressure Meds', chipDiabetesMeds: 'Diabetes Meds', chipBloodThinners: 'Blood Thinners',
+        chipPainRelievers: 'Pain Relievers', chipAntibiotics: 'Antibiotics', chipAntidepressants: 'Antidepressants',
+        chipCholesterol: 'Cholesterol Meds', chipInhalers: 'Inhalers',
+        chipPenicillin: 'Penicillin', chipAspirin: 'Aspirin', chipSulfa: 'Sulfa Drugs',
+        chipLatex: 'Latex', chipDust: 'Dust', chipPollen: 'Pollen',
+        chipFoodAllergy: 'Food Allergy', chipInsectBites: 'Insect Bites',
+        chipAppendectomy: 'Appendectomy', chipCSection: 'C-Section', chipHeartSurgery: 'Heart Surgery',
+        chipJoint: 'Joint Replacement', chipGallbladder: 'Gallbladder', chipEyeSurgery: 'Eye Surgery',
+        chipHernia: 'Hernia', chipTonsils: 'Tonsillectomy',
+        chipFDiabetes: 'Diabetes', chipFHypertension: 'Hypertension', chipFHeart: 'Heart Disease',
+        chipFCancer: 'Cancer', chipFAsthma: 'Asthma', chipFGenetic: 'Genetic Disorders',
+        chipFMental: 'Mental Health', chipFBlood: 'Blood Disorders',
+        chipSmoking: 'Smoking', chipAlcohol: 'Alcohol', chipExercise: 'Regular Exercise',
+        chipSedentary: 'Sedentary Lifestyle', chipHealthyDiet: 'Healthy Diet',
+        chipPoorSleep: 'Poor Sleep', chipCaffeine: 'High Caffeine',
+        chipHeadache: 'Headache', chipChestPain: 'Chest Pain', chipBreath: 'Shortness of Breath',
+        chipDizziness: 'Dizziness', chipFatigue: 'Chronic Fatigue', chipJointPain: 'Joint Pain',
+        chipBackPain: 'Back Pain', chipVision: 'Vision Problems', chipNausea: 'Nausea', chipNumbness: 'Numbness',
+        chipNone: 'None', btnNext: 'NEXT', timeRemaining: 'Time Remaining'
+      },
+      ar: {
+        catChronic: 'الأمراض المزمنة', catMeds: 'الأدوية الحالية', catAllergies: 'الحساسية',
+        catSurgery: 'العمليات الجراحية', catFamily: 'التاريخ العائلي', catHabits: 'العادات اليومية', catSymptoms: 'الأعراض الحالية',
+        chipDiabetes: 'السكري', chipHypertension: 'ضغط الدم', chipHeartDisease: 'أمراض القلب',
+        chipAsthma: 'الربو', chipKidney: 'مرض الكلى', chipLiver: 'مرض الكبد',
+        chipThyroid: 'اضطراب الغدة الدرقية', chipCancer: 'السرطان', chipEpilepsy: 'الصرع', chipAnemia: 'فقر الدم',
+        chipBPMeds: 'أدوية ضغط الدم', chipDiabetesMeds: 'أدوية السكري', chipBloodThinners: 'مميعات الدم',
+        chipPainRelievers: 'مسكنات الألم', chipAntibiotics: 'مضادات حيوية', chipAntidepressants: 'مضادات اكتئاب',
+        chipCholesterol: 'أدوية الكوليسترول', chipInhalers: 'بخاخات',
+        chipPenicillin: 'بنسيلين', chipAspirin: 'أسبرين', chipSulfa: 'أدوية السلفا',
+        chipLatex: 'لاتكس', chipDust: 'غبار', chipPollen: 'لقاح',
+        chipFoodAllergy: 'حساسية طعام', chipInsectBites: 'لدغات حشرات',
+        chipAppendectomy: 'استئصال الزائدة', chipCSection: 'ولادة قيصرية', chipHeartSurgery: 'عملية قلب',
+        chipJoint: 'تغيير مفصل', chipGallbladder: 'مرارة', chipEyeSurgery: 'عملية عين',
+        chipHernia: 'فتق', chipTonsils: 'استئصال اللوز',
+        chipFDiabetes: 'السكري', chipFHypertension: 'ضغط الدم', chipFHeart: 'أمراض القلب',
+        chipFCancer: 'السرطان', chipFAsthma: 'الربو', chipFGenetic: 'أمراض وراثية',
+        chipFMental: 'صحة نفسية', chipFBlood: 'اضطرابات الدم',
+        chipSmoking: 'التدخين', chipAlcohol: 'الكحول', chipExercise: 'رياضة منتظمة',
+        chipSedentary: 'نمط حياة جلوس', chipHealthyDiet: 'نظام غذائي صحي',
+        chipPoorSleep: 'قلّة النوم', chipCaffeine: 'كافيين عالي',
+        chipHeadache: 'صداع', chipChestPain: 'ألم الصدر', chipBreath: 'ضيق التنفس',
+        chipDizziness: 'دوخة', chipFatigue: 'إرهاق مزمن', chipJointPain: 'ألم المفاصل',
+        chipBackPain: 'ألم الظهر', chipVision: 'مشاكل بصرية', chipNausea: 'غثيان', chipNumbness: 'تنميل',
+        chipNone: 'لا يوجد', btnNext: 'التالي', timeRemaining: 'الوقت المتبقي'
+      }
+    };
+
+    var currentLang = localStorage.getItem('mindrobot_lang') || 'en';
+
+    function applyMrLang(lang) {
+      var dict = mrI18n[lang]; if (!dict) return;
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (dict[key]) el.textContent = dict[key];
+      });
+    }
+
+    applyMrLang(currentLang);
+    document.addEventListener('mindrobot:langchange', function(e) {
+      currentLang = e.detail.lang;
+      applyMrLang(currentLang);
+    });
+
+    // ═══════════════════════════════════════
+    // ✅ Edge TTS - صوت إرشادي لكل كارد في السجل الطبي
+    // ═══════════════════════════════════════
+    var mrTTScache = {};
+    var mrTTSbusy = false;
+    var mrTTSaudio = null;
+
+    // ✅ تحميل كل الأصوات مسبقاً عشان يكونوا جاهزين فوراً
+    function preloadMRTTS() {
+      var texts = [];
+      // صفحة الترحيب
+      texts.push('صفحة السجل الطبي. يرجى اختيار الأمراض المزمنة إن وُجدت.');
+      // كل الكروت
+      document.querySelectorAll('[data-tts]').forEach(function(el) {
+        var msg = el.getAttribute('data-tts');
+        if (msg && texts.indexOf(msg) === -1) texts.push(msg);
+      });
+      // بعت كلهم للسرفر دفعة واحدة
+      texts.forEach(function(text) {
+        fetch('/tts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: text, lang: 'ar' })
+        })
+        .then(function(r) {
+          if (!r.ok) return;
+          return r.blob();
+        })
+        .then(function(blob) {
+          if (!blob) return;
+          mrTTScache[text] = URL.createObjectURL(blob);
+        })
+        .catch(function() {});
+      });
+    }
+
+    function playMRTTS(text) {
+      if (mrTTSbusy) return;
+      mrTTSbusy = true;
+
+      // لو الصوت محمل مسبقاً → شغلو فوراً
+      if (mrTTScache[text]) {
+        mrTTSaudio = new Audio(mrTTScache[text]);
+        mrTTSaudio.addEventListener('ended', function() { mrTTSbusy = false; });
+        mrTTSaudio.addEventListener('error', function() { mrTTSbusy = false; });
+        mrTTSaudio.play();
+        return;
+      }
+
+      // لو مش محمل → حمله دلوقتي
+      fetch('/tts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: text, lang: 'ar' })
+      })
+      .then(function(r) {
+        if (!r.ok) { mrTTSbusy = false; return; }
+        return r.blob();
+      })
+      .then(function(blob) {
+        if (!blob) { mrTTSbusy = false; return; }
+        var url = URL.createObjectURL(blob);
+        mrTTScache[text] = url;
+        mrTTSaudio = new Audio(url);
+        mrTTSaudio.addEventListener('ended', function() { mrTTSbusy = false; });
+        mrTTSaudio.addEventListener('error', function() { mrTTSbusy = false; });
+        mrTTSaudio.play();
+      })
+      .catch(function() { mrTTSbusy = false; });
+    }
+
+    // ✅ أول ما الصفحة تفتح → الروبوت يشرح الصفحة
+    window.addEventListener('load', function() {
+      function tryPlayWelcome() {
+        if (document.visibilityState !== 'visible') {
+          setTimeout(tryPlayWelcome, 500); return;
+        }
+        fetch('/api/sensor_status')
+          .then(function() { return; })
+          .catch(function() { return; });
+        var welcomeText = 'صفحة السجل الطبي. يرجى اختيار الأمراض المزمنة إن وُجدت.';
+        if (mrTTScache[welcomeText]) {
+          playMRTTS(welcomeText);
+        } else {
+          setTimeout(function() {
+            playMRTTS(welcomeText);
+          }, 3000);
+        }
+      }
+      tryPlayWelcome();
+    });
+
+    // ✅ تحميل الأصوات مسبقاً
+    preloadMRTTS();
+
+    // ✅ كل كارد لما المريض يدوس عليه → الصوت يشرحه فوراً
+    document.querySelectorAll('[data-tts]').forEach(function(el) {
+      el.addEventListener('click', function() {
+        var msg = el.getAttribute('data-tts');
+        if (msg) playMRTTS(msg);
+      });
+    });
+  </script>
+</body>
+</html>

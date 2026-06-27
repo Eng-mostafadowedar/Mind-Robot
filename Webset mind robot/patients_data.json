@@ -1,0 +1,21 @@
+{
+  "patients": [
+    {
+      "firstName": "بيشوي كامل كامل ميخائيل",
+      "lastName": "ميخائيل",
+      "age": 22,
+      "gender": "male",
+      "weight": 70,
+      "height": 170,
+      "bloodType": "unknown",
+      "occupation": "طالب",
+      "phone": "+2001205702337",
+      "email": "beshoyk302@gmail.com",
+      "address": "شبرا, القاهرة",
+      "visitDate": "2026-05-28T21:37",
+      "timestamp": "2026-05-28T18:37:04.738Z",
+      "photo": "",
+      "id": "1779993424856"
+    }
+  ]
+}

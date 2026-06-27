@@ -1,0 +1,173 @@
+/* =========================================
+   Master Style - MindRobot
+   السيد اللي بيتحكم في كل الألوان والخطوط والشكل العام
+   ========================================= */
+
+:root {
+  /* الخطوط */
+  --app-font: 'Microsoft Uighur', Tahoma, Arial, sans-serif;
+  --app-fz-xs: 12px;
+  --app-fz-sm: 14px;
+  --app-fz-md: 16px;
+  --app-fz-lg: 19px;
+  --app-fz-xl: 22px;
+  --app-fz-2xl: 26px;
+
+  /* ألوان الدارك مود (الأساسي) */
+  --accent: #43e5ff;
+  --accent-dim: rgba(67, 229, 255, 0.10);
+  --accent-border: rgba(67, 229, 255, 0.40);
+  --accent2: #9b7bff;
+  --warn: #ffab00;
+  --ok: #2ee59d;
+  --danger: #ff3d71;
+
+  --bg0: #070a14;
+  --bg1: #0b1230;
+  --fg: #e7eeff;
+  --muted: #a9b7df;
+  --glass: rgba(255,255,255,0.08);
+  --stroke: rgba(255,255,255,0.14);
+  --card: rgba(10,14,28,0.35);
+  --shadow: 0 10px 40px rgba(0,0,0,0.35);
+  --panel: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.05));
+
+  /* المسافات */
+  --space-1: 8px;
+  --space-2: 12px;
+  --space-3: 16px;
+  --space-4: 20px;
+  --space-5: 24px;
+
+  /* المقاسات */
+  --max-width: 1200px;
+  --radius-sm: 10px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 18px;
+  --radius-pill: 999px;
+}
+
+/* ألوان اللايت مود */
+html[data-theme="light"] {
+  --bg0: #f7f9ff;
+  --bg1: #dfe8ff;
+  --fg: #0b1022;
+  --muted: #4b5a80;
+  --glass: rgba(11,16,34,0.06);
+  --stroke: rgba(11,16,34,0.14);
+  --card: rgba(255,255,255,0.62);
+  --shadow: 0 14px 44px rgba(11,16,34,0.14);
+  --panel: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.55));
+}
+
+/* ═══ إعادة تعيين (Reset) ═══ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow-x: hidden; }
+
+body {
+  font-family: var(--app-font) !important;
+  font-size: var(--app-fz-md) !important;
+  color: var(--fg);
+  background:
+    radial-gradient(1200px 600px at 15% 10%, rgba(67,229,255,0.14), transparent 60%),
+    radial-gradient(900px 500px at 85% 25%, rgba(155,123,255,0.14), transparent 60%),
+    radial-gradient(900px 500px at 50% 90%, rgba(46,229,157,0.10), transparent 60%),
+    linear-gradient(180deg, var(--bg0), var(--bg1));
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══ الهيكل الأساسي ═══ */
+.app-shell { width: 100%; min-height: 100vh; margin: 0 auto; }
+
+/* ═══ شريط التصفح (Nav Tabs) - مقربين جداً من بعض ومفيش خط تحت ═══ */
+.workspace-nav {
+  display: flex; gap: 2px; padding: 0 24px; /* ✅ قربناهم أكتر (gap: 2px) */
+  max-width: var(--max-width); margin: 0 auto;
+  border-bottom: none !important; 
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+
+.workspace-tab {
+  position: relative;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 12px; /* ✅ ضيقنا الـ padding أكتر (10px 12px) */
+  border-radius: 0 !important; 
+  border: none !important; 
+  background: transparent !important; 
+  color: var(--muted); font-family: var(--app-font) !important;
+  font-size: var(--app-fz-xl) !important; 
+  font-weight: 600 !important;
+  text-decoration: none; cursor: pointer; 
+  transition: color 0.3s ease; 
+  white-space: nowrap;
+}
+
+/* ✅ شيلنا الخط اللي تحت خالص (الـ after دول كانوا بيرسموا الخط) */
+.workspace-tab::after {
+  display: none !important; 
+}
+
+/* لما الماوس يعدي على التاب */
+.workspace-tab:hover {
+  color: var(--fg);
+}
+
+/* التاب النشط (Active) - بيفتح لونه بس من غير خطوط */
+.workspace-tab.active {
+  color: var(--accent) !important;
+  text-shadow: 0 0 10px rgba(67, 229, 255, 0.3); 
+}
+
+/* ألوان اللايت مود للتابات */
+html[data-theme="light"] .workspace-tab { 
+  color: rgba(30,41,70,0.6); 
+}
+html[data-theme="light"] .workspace-tab:hover { 
+  color: #0b1022; 
+}
+html[data-theme="light"] .workspace-tab.active { 
+  color: #0b7a8a !important;
+  text-shadow: none;
+}
+
+.workspace { max-width: var(--max-width); margin: 0 auto; padding: 0 24px 28px; }
+
+/* ═══ البانلات (Panels) ═══ */
+.page-grid { display: grid; gap: var(--space-4); align-items: start; }
+.panel { background: var(--panel); border: 1px solid var(--stroke); border-radius: var(--radius-xl); box-shadow: var(--shadow); backdrop-filter: blur(16px); overflow: hidden; min-width: 0; }
+.panel-header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-2); padding: var(--space-3) var(--space-3) 0; margin-bottom: var(--space-2); }
+.panel-title { font-family: var(--app-font) !important; font-size: var(--app-fz-lg) !important; font-weight: 700 !important; color: var(--fg); }
+.panel-hint { font-family: var(--app-font) !important; font-size: var(--app-fz-sm) !important; color: var(--muted); }
+
+/* ═══ المدخلات (Inputs) ═══ */
+input[type="text"], input[type="number"], input[type="email"], input[type="tel"], input[type="date"], select, textarea {
+  width: 100%; border-radius: var(--radius-md); border: 1px solid var(--stroke);
+  background: rgba(255,255,255,0.06); padding: 12px 14px; color: var(--fg);
+  font-family: var(--app-font) !important; font-size: var(--app-fz-md);
+  outline: none; resize: vertical; transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+input:focus, select:focus, textarea:focus { border-color: rgba(67,229,255,0.50); box-shadow: 0 0 0 3px rgba(67,229,255,0.08); }
+html[data-theme="light"] input, html[data-theme="light"] select, html[data-theme="light"] textarea { border-color: rgba(11,16,34,0.12); background: rgba(255,255,255,0.80); }
+::placeholder { color: rgba(169,183,223,0.40); }
+html[data-theme="light"] ::placeholder { color: rgba(75,90,128,0.45); }
+
+/* ═══ الأزرار (Buttons) ═══ */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid var(--stroke); border-radius: var(--radius-md); padding: 10px 16px;
+  font-family: var(--app-font) !important; font-size: var(--app-fz-sm); font-weight: 700;
+  cursor: pointer; transition: all 0.15s ease; outline: none; color: var(--fg); background: rgba(255,255,255,0.08);
+}
+.btn:hover { border-color: rgba(67,229,255,0.28); }
+.btn-primary { background: linear-gradient(90deg, rgba(67,229,255,0.9), rgba(155,123,255,0.9)); border-color: rgba(255,255,255,0.18); color: #0b1022; }
+html[data-theme="light"] .btn { border-color: rgba(11,16,34,0.14); background: rgba(255,255,255,0.78); }
+html[data-theme="light"] .btn-primary { background: linear-gradient(90deg, #0b7a8a, #3f51b5); color: #fff; }
+
+/* ═══ الـ Scrollbar ═══ */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(67,229,255,0.15); border-radius: 3px; }
+html[data-theme="light"] ::-webkit-scrollbar-thumb { background: rgba(11,16,34,0.12); }

@@ -1,0 +1,152 @@
+/* =========================================
+   Form.css - تصميم الفورم مكمل
+   ========================================= */
+
+.panel-title {
+  font-size: 34px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.5px !important;
+}
+
+.panel-hint {
+  font-size: 18px !important;
+  opacity: 0.9 !important;
+  margin-top: 4px;
+}
+
+.if-body { padding: var(--space-2); display: flex; flex-direction: column; gap: 14px; }
+.if-layout { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 24px; align-items: start; }
+@media (max-width: 900px) { .if-layout { grid-template-columns: 1fr; } }
+
+.if-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.if-field { display: flex; flex-direction: column; gap: 4px; margin-bottom: 6px; }
+.if-label { font-size: var(--app-fz-sm); color: var(--muted); font-weight: 600; font-family: var(--app-font); }
+
+.if-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--stroke); }
+.if-group:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.if-group-label { font-size: var(--app-fz-md); font-weight: 700; color: var(--accent); font-family: var(--app-font); display: flex; align-items: center; gap: 8px; }
+.if-group-fields { display: flex; flex-direction: column; gap: 2px; }
+
+.if-field.has-error input, .if-field.has-error .if-dropdown-trigger { border-color: var(--danger) !important; box-shadow: 0 0 0 3px rgba(255, 61, 113, 0.15) !important; animation: headShake 0.5s ease; }
+.if-error { font-size: var(--app-fz-xs); color: var(--danger); display: none; margin-top: 2px; }
+.if-field.has-error .if-error { display: block; }
+@keyframes headShake { 0% { transform: translateX(0); } 15% { transform: translateX(-5px); } 30% { transform: translateX(5px); } 45% { transform: translateX(-3px); } 60% { transform: translateX(3px); } 100% { transform: translateX(0); } }
+
+.if-dropdown { position: relative; }
+.if-dropdown-trigger { width: 100%; border-radius: var(--radius-md); border: 1px solid var(--stroke); background: rgba(255,255,255,0.06); padding: 12px 14px; color: var(--muted); font-size: var(--app-fz-md); font-family: var(--app-font) !important; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; outline: none; transition: border-color 0.15s ease, box-shadow 0.15s ease; }
+.if-dropdown-trigger:focus { border-color: rgba(67,229,255,0.50); box-shadow: 0 0 0 3px rgba(67,229,255,0.08); }
+html[data-theme="light"] .if-dropdown-trigger { border-color: rgba(11,16,34,0.12); background: rgba(255,255,255,0.80); }
+.if-dropdown-menu { position: absolute; top: 100%; left: 0; right: 0; background: var(--bg1); border: 1px solid var(--stroke); border-radius: var(--radius-md); margin-top: 4px; z-index: 50; display: none; max-height: 200px; overflow-y: auto; box-shadow: var(--shadow); }
+.if-dropdown.open .if-dropdown-menu { display: block; }
+.if-dropdown-item { padding: 10px 14px; cursor: pointer; display: flex; align-items: center; gap: 8px; color: var(--fg); font-family: var(--app-font); font-size: var(--app-fz-sm); }
+.if-dropdown-item:hover { background: var(--accent-dim); }
+.if-dropdown-item i { width: 16px; text-align: center; color: var(--accent); font-size: 12px; }
+.if-blood-icon { color: #ff2a2a !important; text-shadow: 0 0 4px rgba(255, 42, 42, 0.4); }
+
+.if-cam-col { display: flex; flex-direction: column; gap: 16px; }
+.if-cam-title { font-size: 22px; font-weight: 900; color: var(--fg); font-family: var(--app-font); text-align: center; text-transform: uppercase; letter-spacing: 1px; }
+
+.if-cam-frame { position: relative; width: 100%; height: 320px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--accent-border); background: rgba(0,0,0,0.4); box-shadow: var(--shadow); }
+#cameraVideo { position: absolute; inset: 0; z-index: 1; overflow: hidden; }
+.if-cam-frame video, .if-cam-frame canvas, .if-cam-frame img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }
+.if-cam-overlay { position: absolute; top: 12px; left: 12px; display: flex; gap: 8px; z-index: 10; }
+.if-rec-dot { width: 8px; height: 8px; background: var(--danger); border-radius: 50%; animation: livePulse 1.5s infinite; align-self: center; }
+.if-live-txt { font-size: 11px; color: var(--danger); font-weight: 700; font-family: var(--app-font); }
+.if-cam-src { font-size: 11px; color: var(--accent); background: rgba(0,0,0,0.6); padding: 2px 6px; border-radius: 4px; font-family: var(--app-font); }
+
+.if-cam-datetime {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0,0,0,0.70);
+  backdrop-filter: blur(4px);
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: #fff;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: right;
+  z-index: 11;
+  text-shadow: 0 0 4px rgba(0,0,0,0.8);
+}
+
+.if-cam-wait { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--muted); font-family: var(--app-font); gap: 8px; z-index: 5; }
+.if-cam-wait i { font-size: 32px; opacity: 0.4; }
+.if-cam-hint { font-size: 11px; opacity: 0.5; }
+
+.if-captured { position: absolute; inset: 0; z-index: 20; display: none; background: #000; }
+.if-captured img { width: 100%; height: 100%; object-fit: cover; }
+.if-captured-over { position: absolute; bottom: 0; left: 0; right: 0; padding: 10px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); display: flex; justify-content: center; }
+.if-retake-btn { background: var(--glass); border: 1px solid var(--stroke); color: var(--fg); padding: 8px 16px; border-radius: var(--radius-sm); cursor: pointer; font-family: var(--app-font); display: flex; align-items: center; gap: 6px; }
+
+.if-cam-footer { display: flex; justify-content: space-between; align-items: center; background: var(--panel); border: 1px solid var(--stroke); border-radius: var(--radius-md); padding: 16px; }
+.if-cam-info { display: flex; align-items: center; gap: 12px; }
+.if-cam-info-icon { color: var(--accent); font-size: 22px; }
+.if-cam-info-text { display: flex; flex-direction: column; }
+.if-cam-info-title { font-weight: 800; color: var(--fg); font-size: 18px; }
+.if-cam-info-desc { font-size: 13px; color: var(--muted); opacity: 0.8; }
+.if-photo-slot { width: 60px; height: 60px; border-radius: 50%; background: var(--glass); border: 2px solid var(--accent-border); overflow: hidden; display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 20px; }
+.if-photo-slot img { width: 100%; height: 100%; object-fit: cover; }
+
+.if-face-box { 
+  position: absolute; 
+  top: 50%; left: 50%; 
+  transform: translate(-50%, -50%); 
+  width: 60%; height: 70%; 
+  border: 2px dashed rgba(255, 255, 255, 0.3); 
+  border-radius: 16px; z-index: 12; 
+  display: block; 
+  transition: all 0.3s ease; 
+}
+.if-face-box.detected { 
+  border: 3px solid var(--ok); 
+  border-style: solid; 
+  box-shadow: 0 0 25px rgba(46, 229, 157, 0.4); 
+}
+
+.if-cam-prompt {
+  position: absolute; bottom: 12%; left: 50%; transform: translateX(-50%);
+  background: rgba(0,0,0,0.80); backdrop-filter: blur(6px); padding: 10px 20px;
+  border-radius: 10px; border: 1px solid var(--accent-border); color: #fff;
+  font-size: 15px; font-weight: 700; font-family: var(--app-font); z-index: 16;
+  display: none; text-align: center; white-space: nowrap;
+}
+.if-cam-frame.prompting .if-cam-prompt { display: block; }
+
+.if-countdown {
+  position: absolute; inset: 0; display: none; align-items: center; justify-content: center;
+  z-index: 18; font-size: 120px; font-weight: 900; color: #fff; font-family: var(--app-font);
+  text-shadow: 0 0 30px rgba(255,255,255,0.8), 0 0 60px var(--accent); animation: countPulse 1s ease infinite;
+}
+.if-cam-frame.counting .if-countdown { display: flex; }
+.if-cam-frame.counting .if-cam-prompt { display: none; }
+@keyframes countPulse { 0%, 100% { transform: scale(1); opacity: 0.9; } 50% { transform: scale(1.3); opacity: 1; } }
+
+.if-next-section { padding: var(--space-4); }
+.if-next-wrapper { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.if-btns-row { flex-direction: row !important; gap: 16px; justify-content: center; }
+.if-home-btn { padding: 0 60px; height: 50px; font-size: var(--app-fz-lg); letter-spacing: 1px; position: relative; overflow: hidden; border: none; background: linear-gradient(135deg, #43e5ff, #7c3aed); color: #fff; border-radius: var(--radius-md); cursor: pointer; text-decoration: none; transition: all 0.3s; font-weight: 700; font-family: var(--app-font); display: inline-flex; align-items: center; justify-content: center; box-sizing: border-box; margin: 0; line-height: 1; }
+.if-home-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(67,229,255,0.4); }
+.if-home-btn::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%); transform: rotate(45deg); animation: btnShimmer 3s infinite; }
+.if-next-btn { padding: 0 60px; height: 50px; box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center;   font-size: var(--app-fz-lg); letter-spacing: 1px; position: relative; overflow: hidden; border: none; }
+.if-next-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(67,229,255,0.4); }
+.if-next-btn::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%); transform: rotate(45deg); animation: btnShimmer 3s infinite; }
+@keyframes btnShimmer { 0% { transform: translateX(-100%) rotate(45deg); } 100% { transform: translateX(100%) rotate(45deg); } }
+.if-next-hint { font-size: var(--app-fz-xs); color: var(--muted); opacity: 0.7; }
+
+@keyframes livePulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+/* ✅ شبكة الاسم الرباعي */
+.if-name-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 600px) { .if-name-grid { grid-template-columns: 1fr; } }
+
+/* ✅ مجموعة الإدخال (بادئة ولاحقة ثابتة - التليفون والإيميل) */
+.if-input-group { display: flex; align-items: stretch; border-radius: var(--radius-md); border: 1px solid var(--stroke); background: rgba(255,255,255,0.06); overflow: hidden; transition: border-color 0.15s ease, box-shadow 0.15s ease; }
+.if-input-group:focus-within { border-color: rgba(67,229,255,0.50); box-shadow: 0 0 0 3px rgba(67,229,255,0.08); }
+html[data-theme="light"] .if-input-group { border-color: rgba(11,16,34,0.12); background: rgba(255,255,255,0.80); }
+.if-input-group input { border: none !important; background: transparent !important; box-shadow: none !important; border-radius: 0 !important; flex: 1; padding: 12px 14px; color: var(--fg); font-size: var(--app-fz-md); font-family: var(--app-font) !important; outline: none; }
+.if-input-group input::placeholder { color: var(--muted); opacity: 0.5; }
+.if-addon { display: flex; align-items: center; padding: 0 14px; color: var(--accent); font-weight: 700; font-size: var(--app-fz-md); font-family: var(--app-font); white-space: nowrap; background: rgba(67,229,255,0.08); user-select: none; }
+.if-field.has-error .if-input-group { border-color: var(--danger) !important; box-shadow: 0 0 0 3px rgba(255, 61, 113, 0.15) !important; }

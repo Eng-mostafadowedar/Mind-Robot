@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home - MindRobot</title>
+  <meta name="color-scheme" content="dark light" />
+  
+  <!-- ✅ مسارات مطلقة من الجذر (Root Paths) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../master.css" />
+  <link rel="stylesheet" href="../header/header.css" />
+  
+  <script src="../header/header.js" defer></script>
+
+  <style>
+    
+    /* =========================================
+       Home Page - 3D Cute Robot Design
+       ========================================= */
+
+    .home-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 70vh; 
+      text-align: center;
+      padding: 20px 20px 20px; 
+      position: relative;
+      overflow: hidden;
+    }
+
+    .home-glow-bg {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; 
+      height: 600px;
+      background: radial-gradient(circle, rgba(67, 229, 255, 0.18) 0%, rgba(155, 123, 255, 0.1) 30%, transparent 70%);
+      border-radius: 50%;
+      z-index: 0;
+      animation: breatheGlow 4s ease-in-out infinite;
+    }
+
+    @keyframes breatheGlow {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+      50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+    }
+
+    .home-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    /* كلمة MINDROBOT بأنيميشن النبض */
+    .home-title {
+      font-family: var(--app-font);
+      font-size: 110px;
+      font-weight: 900;
+      letter-spacing: 12px;
+      margin: 0 0 5px 0; 
+      color: #fff;
+      animation: pulseTitle 3s ease-in-out infinite;
+    }
+
+    @keyframes pulseTitle {
+      0%, 100% { 
+        text-shadow: 0 0 15px rgba(67, 229, 255, 0.7), 0 0 30px rgba(67, 229, 255, 0.4);
+        transform: scale(1);
+      }
+      50% { 
+        text-shadow: 0 0 30px rgba(67, 229, 255, 1), 0 0 60px rgba(67, 229, 255, 0.8), 0 0 100px rgba(155, 123, 255, 0.5); 
+        transform: scale(1.03); 
+      }
+    }
+
+    /* الدايرة */
+    .home-robot-visual {
+      position: relative;
+      width: 300px;  
+      height: 300px; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px; 
+    }
+
+    /* الدوائر الدوارة */
+    .robot-ring {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      border-radius: 50%;
+      border: 2px solid transparent;
+    }
+
+    .robot-ring.r1 {
+      border-top: 4px solid var(--accent2);
+      border-bottom: 4px solid var(--accent2);
+      animation: spinRing 6s linear infinite;
+      box-shadow: 0 0 15px rgba(155, 123, 255, 0.3);
+    }
+
+    .robot-ring.r2 {
+      border-left: 4px solid var(--accent);
+      border-right: 4px solid var(--accent);
+      animation: spinRing 10s linear infinite reverse;
+      box-shadow: 0 0 15px rgba(67, 229, 255, 0.3);
+    }
+
+    .robot-ring.r3 {
+      top: 10%; left: 10%; right: 10%; bottom: 10%;
+      border-top: 2px dashed var(--accent);
+      border-bottom: 2px dashed var(--accent2);
+      animation: spinRing 15s linear infinite;
+      opacity: 0.5;
+    }
+
+    @keyframes spinRing {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* الروبوت 3D */
+    .clay-robot {
+      position: relative;
+      width: 180px; 
+      height: 160px;
+      z-index: 2;
+      transform-origin: bottom center;
+      animation: floatRobot 4s ease-in-out infinite;
+    }
+
+    @keyframes floatRobot {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-10px) rotate(-5deg); }
+      50% { transform: translateY(-15px) rotate(0deg); }
+      75% { transform: translateY(-10px) rotate(5deg); }
+    }
+
+    /* الرأس */
+    .clay-head {
+      width: 100%;
+      height: 160px;
+      background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+      border-radius: 60px;
+      position: relative;
+      box-shadow: 
+        15px 15px 30px rgba(0,0,0,0.4),
+        -5px -5px 15px rgba(67, 229, 255, 0.1),
+        inset 5px 5px 15px rgba(255,255,255,0.8),
+        inset -5px -5px 10px rgba(0,0,0,0.05);
+    }
+
+    /* الشاشة */
+    .clay-face {
+      position: absolute;
+      top: 22px; left: 22px; right: 22px; bottom: 30px;
+      background: #0f172a;
+      border-radius: 45px;
+      box-shadow: 
+        inset 8px 8px 20px rgba(0,0,0,0.8), 
+        inset -3px -3px 10px rgba(67, 229, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    /* الودان */
+    .clay-ear {
+      position: absolute;
+      width: 22px;
+      height: 45px;
+      top: 50px;
+      background: linear-gradient(90deg, #cbd5e1, #f1f5f9, #cbd5e1);
+      border-radius: 12px;
+      box-shadow: 5px 5px 10px rgba(0,0,0,0.3), inset 2px 0 5px rgba(255,255,255,0.5);
+    }
+    .clay-ear.left { left: -16px; }
+    .clay-ear.right { right: -16px; }
+
+    /* العيون */
+    .clay-eyes {
+      display: flex;
+      gap: 30px;
+      animation: lookAround 5s ease-in-out infinite;
+    }
+
+    @keyframes lookAround {
+      0%, 20%, 100% { transform: translateX(0); }
+      30%, 50% { transform: translateX(4px); } 
+      60%, 80% { transform: translateX(-4px); } 
+    }
+
+    .clay-eye {
+      width: 24px;
+      height: 40px;
+      background: radial-gradient(circle at 30% 30%, #67e8f9, #0891b2);
+      border-radius: 50%;
+      box-shadow: 0 0 15px var(--accent), inset 3px 3px 8px rgba(255,255,255,0.5);
+      position: relative;
+      animation: cuteBlink 4s ease-in-out infinite;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    .clay-eye.right { animation-delay: 0.1s; }
+
+    @keyframes cuteBlink {
+      0%, 92%, 100% { transform: scaleY(1); }
+      96% { transform: scaleY(0.1); } 
+    }
+
+    /* الفم */
+    .clay-mouth {
+      width: 45px;
+      height: 22px;
+      border-bottom: 4px solid var(--accent2);
+      border-radius: 0 0 25px 25px;
+      box-shadow: 0 4px 15px rgba(155, 123, 255, 0.6);
+      transform-origin: top center;
+      transform: scaleY(1);
+      transition: transform 0.1s ease;
+    }
+
+    /* الفم بيتحرك بس لما الروبوت بتكلم */
+    .clay-mouth.talking {
+      animation: talkingMouth 1.2s ease-in-out infinite;
+    }
+
+    @keyframes talkingMouth {
+      0%, 40%, 100% { transform: scaleY(1); }
+      10% { transform: scaleY(1.5); }
+      20% { transform: scaleY(0.8); }
+      30% { transform: scaleY(1.3); }
+    }
+
+    .home-subtitle {
+      font-family: var(--app-font);
+      font-size: 26px;
+      color: var(--accent2);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 2px; 
+      opacity: 0.9;
+    }
+
+    .home-desc {
+      font-family: var(--app-font);
+      font-size: 20px;
+      color: var(--muted);
+      max-width: 700px;
+      line-height: 1.4;
+      margin-bottom: 15px; 
+    }
+
+    /* ✅✅ الزراير بديزاين الزجاج (Glassmorphism) عشان تبقى لايقة على البورد ✅✅ */
+    .home-actions {
+      display: flex;
+      gap: 20px; 
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .home-btn {
+      display: inline-flex;
+      flex-direction: row; /* الأيقونة جمب الكلام مش تحتيه */
+      align-items: center;
+      gap: 12px;
+      padding: 14px 40px; /* مقاسات أنحف وأنعم */
+      border-radius: 50px; /* شكل الكبسولة بيليق جداً على البورد */
+      font-family: var(--app-font);
+      font-size: 20px; /* حجم خط معقول */
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(12px); /* تأثير الزجاج المات */
+      -webkit-backdrop-filter: blur(12px);
+      text-align: center;
+    }
+
+    .home-btn i { font-size: 22px; } /* حجم أيقونة يتناسب مع الكلام */
+
+    /* زرار الشات (بنفسجي زجاجي) */
+    .home-btn-chat {
+      background: rgba(155, 123, 255, 0.15); /* شفافية عالية */
+      color: #d8b4fe; /* لون فاتح أنيق */
+      border: 1.5px solid rgba(155, 123, 255, 0.4); /* بوردر شفاف */
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), inset 0 0 0 0 rgba(155, 123, 255, 0);
+    }
+    .home-btn-chat:hover {
+      background: rgba(155, 123, 255, 0.3);
+      border-color: var(--accent2);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(155, 123, 255, 0.4);
+      color: #fff;
+    }
+
+    /* زرار التشيك أب (سماوي زجاجي) */
+    .home-btn-checkup {
+      background: rgba(67, 229, 255, 0.15);
+      color: #67e8f9;
+      border: 1.5px solid rgba(67, 229, 255, 0.4);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), inset 0 0 0 0 rgba(67, 229, 255, 0);
+    }
+    .home-btn-checkup:hover {
+      background: rgba(67, 229, 255, 0.3);
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(67, 229, 255, 0.4);
+      color: #fff;
+    }
+
+    /* زرار حفظ البيانات (أخضر زجاجي) */
+    .home-btn-save {
+      background: rgba(50, 205, 50, 0.15);
+      color: #90ee90;
+      border: 1.5px solid rgba(50, 205, 50, 0.4);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), inset 0 0 0 0 rgba(50, 205, 50, 0);
+    }
+    .home-btn-save:hover {
+      background: rgba(50, 205, 50, 0.3);
+      border-color: #32cd32;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(50, 205, 50, 0.4);
+      color: #fff;
+    }
+
+    /* ✅ ستايل الزرار المعطل (لما السنسورات تكون عطلانة) */
+    .disabled-btn {
+      opacity: 0.4 !important; 
+      cursor: not-allowed !important; 
+      pointer-events: none !important;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+
+    /* شاشات الموبايل */
+    @media (max-width: 700px) {
+      .home-robot-visual { width: 220px; height: 220px; margin-bottom: 10px; }
+      .clay-robot { width: 130px; height: 120px; }
+      .clay-head { height: 120px; }
+      .clay-face { top: 18px; left: 18px; right: 18px; bottom: 22px; border-radius: 35px; }
+      .clay-ear { width: 16px; height: 35px; top: 40px; }
+      .clay-ear.left { left: -12px; }
+      .clay-ear.right { right: -12px; }
+      .clay-eye { width: 18px; height: 28px; }
+      .clay-mouth { width: 30px; height: 15px; }
+      .home-title { font-size: 50px; letter-spacing: 3px; margin-bottom: 5px; }
+      .home-subtitle { font-size: 16px; letter-spacing:2px; margin-bottom: 2px; }
+      .home-desc { font-size: 15px; margin-bottom: 15px; }
+      .home-actions { flex-direction: column; gap: 12px; width: 80%; }
+      .home-btn { width: 100%; justify-content: center; padding: 12px 25px; font-size: 18px; }
+      .home-btn i { font-size: 20px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" class="app-shell">
+
+    <main class="workspace">
+      <section class="page-grid if-grid">
+        <section class="panel">
+          <div class="if-body">
+            
+            <div class="home-container">
+              
+              <div class="home-glow-bg"></div>
+              
+              <div class="home-content">
+                
+                <h1 class="home-title" data-i18n="mainTitle">MINDROBOT</h1>
+                
+                <div class="home-robot-visual">
+                  <div class="robot-ring r1"></div>
+                  <div class="robot-ring r2"></div>
+                  <div class="robot-ring r3"></div>
+                  
+                  <div class="clay-robot">
+                    <div class="clay-head">
+                      <div class="clay-ear left"></div>
+                      <div class="clay-ear right"></div>
+                      
+                      <div class="clay-face">
+                        <div class="clay-eyes">
+                          <div class="clay-eye left"></div>
+                          <div class="clay-eye right"></div>
+                        </div>
+                        <div class="clay-mouth"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="home-subtitle" data-i18n="subtitle">AI MEDICAL SYSTEM</div>
+                <p class="home-desc" data-i18n="desc">Welcome to the next generation of AI-driven medical monitoring and assistance.</p>
+                
+                <div class="home-actions">
+                  <!-- زرار الشات -->
+                  <a href="/Chat/Chat.html" class="home-btn home-btn-chat">
+                    <i class="fas fa-robot"></i> <span data-i18n="btnChat">AI CHAT</span>
+                  </a>
+                  
+                  <!-- ✅ زرار الفحص السريع (ضفنا id عشان نقفله لو السنسور عطلان) -->
+                  <a id="btnQuickCheck" href="javascript:void(0)" class="home-btn home-btn-checkup"
+                     onclick="trackEvent('quick_check'); startSensorsThenGo('/overview/overview.html?mode=guest');">
+                    <i class="fas fa-heart-pulse"></i> <span data-i18n="btnQuickCheckup">QUICK CHECK</span>
+                  </a>
+                  
+                  <!-- ✅ زرار حفظ البيانات (ضفنا id عشان نقفله لو السنسور عطلان) -->
+                  <a id="btnSaveData" href="javascript:void(0)" class="home-btn home-btn-save"
+                     onclick="trackEvent('registration'); startSensorsThenGo('/Form/Form.html');">
+                    <i class="fas fa-user-shield"></i> <span data-i18n="btnProfileCheckup">REGISTER & SAVE</span>
+                  </a>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <!-- ✅ سكريبت الترجمة + تسجيل الأحداث الخاص بالهوم بيج -->
+  <script>
+    var homeI18n = {
+      en: {
+        mainTitle: 'MINDROBOT',
+        subtitle: 'AI MEDICAL SYSTEM',
+        desc: 'Welcome to the next generation of AI-driven medical monitoring and assistance.',
+        btnChat: 'AI CHAT',
+        btnQuickCheckup: 'QUICK CHECK',
+        btnProfileCheckup: 'REGISTER & SAVE'
+      },
+      ar: {
+        mainTitle: 'مايند روبوت',
+        subtitle: 'نظام طبي ذكي',
+        desc: 'مرحباً بك في الجيل الجديد من المراقبة والمساعدة الطبية المدعومة بالذكاء الاصطناعي.',
+        btnChat: 'محادثة ذكية',
+        btnQuickCheckup: 'فحص سريع',
+        btnProfileCheckup: 'تسجيل وحفظ'
+      }
+    };
+
+    var currentLang = localStorage.getItem('mindrobot_lang') || 'en';
+
+    function applyHomeLang(lang) {
+      var dict = homeI18n[lang];
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (dict[key]) el.textContent = dict[key];
+      });
+    }
+
+    // نشغل الترجمة أول ما الصفحة تفتح
+    applyHomeLang(currentLang);
+
+    // نسمع لزرار اللغة في الهيدر، ولما يتغير نترجم على طول
+    document.addEventListener('mindrobot:langchange', function (e) {
+      applyHomeLang(e.detail.lang);
+    });
+
+    // ✅ تسجيل الأحداث + حفظ بيانات Quick Check على السيرفر
+    function trackEvent(eventType) {
+      // 1. نزود العداد في localStorage كمان (backup)
+      var stats = JSON.parse(localStorage.getItem('mr_stats') || '{"quick_check":0,"registration":0}');
+      if (eventType === 'quick_check') {
+        stats.quick_check++;
+      } else if (eventType === 'registration') {
+        stats.registration++;
+      }
+      localStorage.setItem('mr_stats', JSON.stringify(stats));
+
+      // 2. نبعت للسيرفر عشان يحفظ في ملف على الـ disk
+      fetch('/api/stats/increment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: eventType })
+      }).catch(function() {});
+    }
+
+    // ✅ حفظ بيانات Quick Check في ملف على الراسبري باي
+    function saveQuickCheck() {
+      fetch('/api/vitals')
+        .then(function(r) { return r.json(); })
+        .then(function(vitals) {
+          fetch('/api/quick_checks', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              heartRate: vitals.hr || 0,
+              spo2: vitals.spo2 || 0,
+              temperature: vitals.temp || 0,
+              gsr: vitals.gsr || 0
+            })
+          }).catch(function() {});
+        })
+        .catch(function() {});
+    }
+
+    // ✅ فحص حالة السنسورات أول ما الصفحة تفتح
+    async function checkSensorHealth() {
+      try {
+        const response = await fetch('/api/sensor_status');
+        const data = await response.json();
+        
+        if (data.error === true) {
+          // السنسورات عطلانة، نقفل الزرارين
+          const btnQuick = document.getElementById('btnQuickCheck');
+          const btnSave = document.getElementById('btnSaveData');
+          
+          if(btnQuick) {
+            btnQuick.classList.add('disabled-btn');
+          }
+          if(btnSave) {
+            btnSave.classList.add('disabled-btn');
+          }
+          
+          // تنبيه صوتي فوراً باستخدام صوت المتصفح
+          const msg = new SpeechSynthesisUtterance('Warning, there is a sensor error. The system is attempting to fix it.');
+          window.speechSynthesis.speak(msg);
+        }
+      } catch (e) {
+        console.error("Failed to check sensor status", e);
+      }
+    }
+    
+    checkSensorHealth();
+
+    // ✅ Edge TTS - صوت عربي من السيرفر مباشرة للمتصفح ( streaming بدون ما ينزل على الرسبيري )
+    var welcomeAudio = null;
+
+
+    // ✅ Start sensors on demand before navigating to sensor pages
+    async function startSensorsThenGo(url) {
+      try {
+        await fetch('/api/sensors/start', { method: 'POST' });
+        await new Promise(r => setTimeout(r, 1500)); // wait for sensors to init
+        window.location.href = url;
+      } catch(e) {
+        window.location.href = url; // go anyway
+      }
+    }
+
+    async function playWelcomeSpeech() {
+      var mouth = document.querySelector('.clay-mouth');
+      var text = 'أهلاً وسهلاً بكم. أنا مايند روبوت، مساعدكم الطبي الذكي. يمكنني مساعدتكم من خلال ثلاث خدمات. المحادثة الذكية، للإجابة على استفساراتكم الطبية. الفحص السريع، لقياس نبض القلب، والأكسجين، والحرارة، والتوتر. أو تسجيل وحفظ بياناتكم، لإصدار تقرير طبي شامل. اختاروا الخدمة المناسبة لكم.';
+
+      try {
+        // POST /tts → بيعطينا الـ MP3 مباشرة في memory من غير ما ينزل على disk
+        var response = await fetch('/api/chat/tts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: text, lang: 'ar' })
+        });
+
+        if (!response.ok) {
+          console.error('TTS failed:', response.status);
+          return;
+        }
+
+        // نجيب الـ audio bytes كـ blob ونشغلها فوراً
+        var audioBlob = await response.blob();
+        var audioUrl = URL.createObjectURL(audioBlob);
+
+        welcomeAudio = new Audio(audioUrl);
+
+        // نفعل حركة الفم لما الصوت يبدأ
+        welcomeAudio.addEventListener('playing', function() {
+          if (mouth) mouth.classList.add('talking');
+          // disable all 3 buttons while speaking
+          document.querySelectorAll('.home-btn').forEach(function(b) {
+            b.classList.add('disabled-btn');
+          });
+        });
+
+        // نقفل حركة الفم لما الصوت يخلص
+        welcomeAudio.addEventListener('ended', function() {
+          if (mouth) mouth.classList.remove('talking');
+          // enable all 3 buttons after speech
+          document.querySelectorAll('.home-btn').forEach(function(b) {
+            b.classList.remove('disabled-btn');
+          });
+          URL.revokeObjectURL(audioUrl);
+        });
+
+        welcomeAudio.addEventListener('error', function() {
+          if (mouth) mouth.classList.remove('talking');
+          document.querySelectorAll('.home-btn').forEach(function(b) {
+            b.classList.remove('disabled-btn');
+          });
+          URL.revokeObjectURL(audioUrl);
+        });
+
+        welcomeAudio.play();
+
+      } catch (e) {
+        console.error('Welcome speech error:', e);
+        if (mouth) mouth.classList.remove('talking');
+      }
+    }
+
+        // ✅ الصوت مربوط بالظبط: 1) الصفحة خلصت 2) السيرفر شغال 3) الصفحة ظاهرة على الشاشة
+    window.addEventListener('load', function() {
+      function tryPlay() {
+        // 1. تأكد إن الصفحة ظاهرة ومش minimized
+        if (document.visibilityState !== 'visible') {
+          setTimeout(tryPlay, 500);
+          return;
+        }
+        // 2. تأكد إن السيرفر شغال (بنبعت request صغير)
+        fetch('/api/sensor_status')
+          .then(function(r) { return r.json(); })
+          .then(function() {
+            // 3. السيرفر شغال والصفحة ظاهرة → ابدأ الكلام
+            playWelcomeSpeech();
+            setInterval(function() {
+              playWelcomeSpeech();
+            }, 300000);
+          })
+          .catch(function() {
+            // السيرفر مش جاهز بعد → جرب تاني بعد ثانية
+            setTimeout(tryPlay, 1000);
+          });
+      }
+      tryPlay();
+    });
+  </script>
+
+</body>
+</html>

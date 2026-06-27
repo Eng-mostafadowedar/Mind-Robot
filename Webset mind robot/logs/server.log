@@ -1,0 +1,352 @@
+/home/mindrobot/Desktop/mindrobot/api_server.py:46: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+/home/mindrobot/Desktop/mindrobot/api_server.py:870: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+/home/mindrobot/Desktop/mindrobot/api_server.py:882: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Started server process [15083]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+🔴 3 LEDs ON
+✅ Gmail User: mindrobot.official@gmail.com
+✅ Gmail App Pass: ****gksu
+[MEMORY] ✅ SQLite DB initialized: /home/mindrobot/Desktop/mindrobot/chat_memory.db
+[CHROMA] ✅ Initialized — 0 documents stored
+[Chat] ✅ MindRobot v16.2 initialized
+[Chat]    🧠 Persona: مايند (Mind) — Technical-First
+[Chat]    📊 CPU Temp: 43.8°C | CPU: 0.5% | RAM: 15.9%
+[Chat]    📚 SQLite Memory + DuckDuckGo + ChromaDB (0 docs)
+[Chat]    🔊 TTS: ar-SA-HamedNeural (with clean_text_for_tts)
+[Chat]    🎭 Modes: Engineering / Medical / Casual (all technical)
+[Chat]    🔄 Retry: 3 attempts | 🗜️ Compression: auto
+[Chat]    📡 ESP32 Commands: 12 mapped
+[Chat]    🌙 Daily Reflection: /reflect endpoint ready
+[Chat]    🗣️ TTS Pronunciation: 200+ diacritics words + conjunction pauses
+[Chat]    🔴 LED: GPIO 22, 5, 13 (thinking/speaking/idle)
+[ROBOT] Mode: idle
+[SERVER] 🚀 MindRobot API v4.0 started
+[SERVER]    🧠 Chat: chat_routes.py v16 (Technical-First Mind Persona)
+[SERVER]    🔊 TTS:  ar-SA-HamedNeural
+[SERVER]    📹 Camera: rpicam-vid
+[SERVER]    📁 Patients + Quick Checks
+[SERVER]    📧 Email: Gmail SMTP
+[SERVER] Health: http://localhost:8000/api/status
+INFO:     127.0.0.1:46174 - "GET /api/status HTTP/1.1" 200 OK
+[SENSOR] ▶️ Started: Heart Rate + SpO2
+[SENSOR] ▶️ Started: Temperature
+[SENSOR] ▶️ Started: GSR Stress
+INFO:     127.0.0.1:46180 - "POST /api/sensors/start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38408 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49760 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36066 - "GET /Home/Home.html HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36068 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36076 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36066 - "GET /master.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36068 - "GET /header/header.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36092 - "GET /header/header.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36092 - "GET /api/sensor_status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36092 - "GET /fontawesome/css/all.min.css HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36092 - "GET /api/sensor_status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36092 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+[TTS] Cleaned text: أهلاً وسهلاً بكم. أَنا مايند روبوت، مساعدكم الطبي الذكي.، يمكنني مساعدتكم من خلا...
+[TTS] voice=ar-SA-HamedNeural rate=-10% len=280 (attempt 1)
+[TTS] ✅ Generated 205056 bytes (attempt 1)
+INFO:     127.0.0.1:36092 - "POST /api/chat/tts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36092 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45498 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58122 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60246 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52624 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36356 - "POST /api/sensors/start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36344 - "POST /api/stats/increment HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36344 - "GET /overview/overview.html?mode=guest HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36344 - "GET /master.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36356 - "GET /header/header.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36362 - "GET /overview/overview.css?v=420 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36344 - "GET /header/header.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36356 - "GET /overview/overview.js?v=5.0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36356 - "GET /fontawesome/css/all.min.css HTTP/1.1" 404 Not Found
+[TTS] Cleaned text: مرحباً بكم، سأبدأ الآن الفحص الطبي. يرجى الهدوء واتباع تعليماتي بعناية.
+[TTS] voice=ar-SA-HamedNeural rate=-10% len=71 (attempt 1)
+[TTS] ✅ Generated 53712 bytes (attempt 1)
+INFO:     127.0.0.1:36356 - "POST /api/chat/tts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36356 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:36382 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44474 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60094 - "GET /api/sensors/status HTTP/1.1" 200 OK
+[TTS] Cleaned text: استعدوا، سنبدأ أَوَّلاً بقياس معدل نبضك ومستوى الأكسجين.
+[TTS] voice=ar-SA-HamedNeural rate=-10% len=56 (attempt 1)
+[TTS] ✅ Generated 40320 bytes (attempt 1)
+INFO:     127.0.0.1:36370 - "POST /api/chat/tts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40558 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "POST /api/start_sensors HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "POST /api/set_sensor_state HTTP/1.1" 200 OK
+[TTS] Cleaned text: الآن سنقيس معدل نبضك ومستوى الأكسجين. يرجى وضع إبهامك بثبات على الجهاز.
+[TTS] voice=ar-SA-HamedNeural rate=-10% len=71 (attempt 1)
+INFO:     127.0.0.1:54942 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54942 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54942 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54942 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54946 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54942 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54942 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54942 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54942 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54942 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54942 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54942 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55186 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54942 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54942 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54942 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54942 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54942 - "GET /vitals HTTP/1.1" 200 OK
+[TTS] ✅ Generated 55728 bytes (attempt 1)
+INFO:     127.0.0.1:36378 - "POST /api/chat/tts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:43508 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38600 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58076 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+[TTS] Cleaned text: انتبه. معدل نبضك هُو مائة وعشرون نبضة في الدقيقة، وهي حالة critical. مستوى الأكس...
+[TTS] voice=ar-SA-HamedNeural rate=-10% len=135 (attempt 1)
+INFO:     127.0.0.1:35614 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35614 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35620 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35614 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35614 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35614 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35614 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35614 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35614 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35614 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36120 - "GET /api/sensors/status HTTP/1.1" 200 OK
+[TTS] ✅ Generated 98352 bytes (attempt 1)
+INFO:     127.0.0.1:36378 - "POST /api/chat/tts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33274 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "POST /api/set_sensor_state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "POST /api/set_sensor_state HTTP/1.1" 200 OK
+[TTS] Cleaned text: ممتاز، الآن سنقيس حَرارَة جسمك. يرجى وضع السبابة بإحكام على جبهتك.
+[TTS] voice=ar-SA-HamedNeural rate=-10% len=66 (attempt 1)
+INFO:     127.0.0.1:33284 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37466 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33284 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33284 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33284 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33284 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33284 - "GET /vitals HTTP/1.1" 200 OK
+[TTS] ✅ Generated 54720 bytes (attempt 1)
+INFO:     127.0.0.1:36378 - "POST /api/chat/tts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52606 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59172 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37610 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+[TTS] Cleaned text: أحسنت. درجة حَرارَة جسمك هِي ستة وثلاثون فاصلة ستة درجة مئوية، وهي تعتبر normal.
+[TTS] voice=ar-SA-HamedNeural rate=-10% len=80 (attempt 1)
+INFO:     127.0.0.1:37626 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37626 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37626 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44798 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37626 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37626 - "GET /vitals HTTP/1.1" 200 OK
+[TTS] ✅ Generated 62496 bytes (attempt 1)
+INFO:     127.0.0.1:36378 - "POST /api/chat/tts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39266 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "POST /api/set_sensor_state HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "POST /api/set_sensor_state HTTP/1.1" 200 OK
+[TTS] Cleaned text: وأخيراً، سنقيس مستوى التوتر لديك. يرجى وضع السبابة والوسطى معاً على الجهاز.
+[TTS] voice=ar-SA-HamedNeural rate=-10% len=75 (attempt 1)
+INFO:     127.0.0.1:39274 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39274 - "GET /vitals HTTP/1.1" 200 OK
+[TTS] ✅ Generated 57312 bytes (attempt 1)
+INFO:     127.0.0.1:36378 - "POST /api/chat/tts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55278 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49990 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51892 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+[TTS] Cleaned text: انتبه. مستوى التوتر لديك هُو ثمانية عشر فاصلة سبعة، مما يشير إلى أنك critical.
+[TTS] voice=ar-SA-HamedNeural rate=-10% len=78 (attempt 1)
+INFO:     127.0.0.1:51896 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51896 - "GET /vitals HTTP/1.1" 200 OK
+[TTS] ✅ Generated 59328 bytes (attempt 1)
+INFO:     127.0.0.1:36378 - "POST /api/chat/tts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46598 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "POST /api/set_sensor_state HTTP/1.1" 200 OK
+[TTS] Cleaned text: انتهى الفحص الطبي بالكامِل. شكراً لتعاونك. سيتم تحويلك الآن للصفحة الرئيسية.
+[TTS] voice=ar-SA-HamedNeural rate=-10% len=76 (attempt 1)
+INFO:     127.0.0.1:44474 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44476 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44476 - "GET /vitals HTTP/1.1" 200 OK
+[TTS] ✅ Generated 61056 bytes (attempt 1)
+INFO:     127.0.0.1:36378 - "POST /api/chat/tts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45312 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /vitals HTTP/1.1" 200 OK
+[SENSOR] ⏹️ Stopped: Heart Rate
+[SENSOR] ⏹️ Stopped: Temperature
+[SENSOR] ⏹️ Stopped: GSR
+[SENSOR] ⏹️ All sensors stopped
+INFO:     127.0.0.1:36378 - "POST /api/sensors/stop HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45318 - "GET /Home/Home.html HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /master.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45318 - "GET /header/header.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45318 - "GET /header/header.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45318 - "GET /api/sensor_status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:36378 - "GET /fontawesome/css/all.min.css HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:45318 - "GET /api/sensor_status HTTP/1.1" 200 OK
+[TTS] Cleaned text: أهلاً وسهلاً بكم. أَنا مايند روبوت، مساعدكم الطبي الذكي.، يمكنني مساعدتكم من خلا...
+[TTS] voice=ar-SA-HamedNeural rate=-10% len=280 (attempt 1)
+[TTS] ✅ Generated 205056 bytes (attempt 1)
+INFO:     127.0.0.1:45318 - "POST /api/chat/tts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45318 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:48904 - "GET /api/sensors/status HTTP/1.1" 200 OK
+[SENSOR] ▶️ Started: Heart Rate + SpO2
+[SENSOR] ▶️ Started: Temperature
+[SENSOR] ▶️ Started: GSR Stress
+INFO:     127.0.0.1:48910 - "POST /api/sensors/start HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48040 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60064 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56666 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34798 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33616 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50616 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:34878 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53006 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42572 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49330 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45892 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39668 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40864 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51824 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40078 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54212 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59846 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50058 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60466 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49052 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38330 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39988 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46982 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42922 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58938 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53074 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58756 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45018 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:42668 - "GET /api/sensors/status HTTP/1.1" 200 OK
+[TTS] Cleaned text: أهلاً وسهلاً بكم. أَنا مايند روبوت، مساعدكم الطبي الذكي.، يمكنني مساعدتكم من خلا...
+[TTS] voice=ar-SA-HamedNeural rate=-10% len=280 (attempt 1)
+[TTS] ✅ Generated 205056 bytes (attempt 1)
+INFO:     127.0.0.1:42680 - "POST /api/chat/tts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:48000 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52516 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35146 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54620 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58676 - "GET /api/sensors/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39542 - "GET /api/sensors/status HTTP/1.1" 200 OK

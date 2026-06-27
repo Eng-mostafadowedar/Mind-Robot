@@ -1,0 +1,12 @@
+[
+  {
+    "role": "user",
+    "content": "Transcription(text=' وعليك', x_groq={'id': 'req_01kszpmwspf05vay2r0xmzx3jh'})",
+    "timestamp": "2026-05-31T22:02:23.587835"
+  },
+  {
+    "role": "assistant",
+    "content": "معلش مش عارف، اسأل أحد الموظفين.",
+    "timestamp": "2026-05-31T22:02:24.298727"
+  }
+]

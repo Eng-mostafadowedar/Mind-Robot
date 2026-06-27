@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Header Preview - MindRobot</title>
+  <meta name="color-scheme" content="dark light" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
+  <!-- ✅ ربط ملف الألوان الأساسي (master.css) عشان الهيدر ياخد الألوان السماوية والداكنة -->
+  <link rel="stylesheet" href="../master.css" />
+  
+  <!-- ملف استايل الهيدر -->
+  <link rel="stylesheet" href="header.css" />
+  
+  <script src="header.js" defer></script>
+  <style>
+    /* استايل مؤقت عشان خلفية المعاينة بس */
+    body {
+      margin: 0;
+      background: var(--bg0, #070a14); /* بياخد اللون من master.css */
+      font-family: var(--app-font, 'Microsoft Uighur', Tahoma, Arial, sans-serif);
+    }
+    .preview-hint {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--muted, rgba(169, 183, 223, 0.30));
+      font-size: 18px;
+      font-family: var(--app-font, 'Microsoft Uighur', Tahoma, Arial, sans-serif);
+    }
+    .preview-hint i { font-size: 40px; display: block; margin-bottom: 16px; opacity: 0.3; }
+  </style>
+</head>
+<body>
+  <!-- الهيدر هيتحقن هنا تلقائي عن طريق header.js -->
+
+  <!-- ✅✅ زرار القفل بتاع الأدمن (هيتحقن جوه الـ Navbar) ✅✅ -->
+  <button id="adminLockBtn" class="admin-lock-btn" title="Admin Lock/Unlock">
+      <i class="fas fa-lock"></i>
+  </button>
+
+  <!-- ✅✅ نافذة إدخال الباسورد ✅✅ -->
+  <div id="adminModal" class="admin-modal">
+      <div class="admin-modal-content">
+          <h3><i class="fas fa-user-shield"></i> Admin Access</h3>
+          <p>Enter password to unlock navigation</p>
+          <input type="password" id="adminPassInput" placeholder="Password...">
+          <div class="admin-modal-actions">
+              <button id="adminLoginBtn" class="admin-btn unlock-btn">Unlock</button>
+              <button id="adminCancelBtn" class="admin-btn cancel-btn">Cancel</button>
+          </div>
+          <p id="adminError" class="admin-error">Incorrect Password!</p>
+      </div>
+  </div>
+
+  <div class="preview-hint">
+    <i class="fas fa-eye"></i>
+    Header Component Preview<br>
+    <small>This is a standalone preview of the MindRobot header</small>
+  </div>
+</body>
+</html>

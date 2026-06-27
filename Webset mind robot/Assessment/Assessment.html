@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>Health Assessment - MindRobot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Tajawal:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Assessment.css?v=1442">
+    <link rel="stylesheet" href="/master.css">
+    <link rel="stylesheet" href="/header/header.css">
+    <link rel="stylesheet" href="/Assessment/Assessment.css?v=142">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+</head>
+<body>
+    <div class="panel">
+        <div class="if-body">
+
+            <div class="ov-container">
+                <div class="ov-unified-card">
+
+                    <!-- Header: Icon hidden via CSS (display:none) -->
+                    <div class="ast-report-header">
+                        <div class="ast-header-icon"><i class="fas fa-robot"></i></div>
+                        <div class="ast-header-text">
+                            <h1 class="ast-header-title" data-i18n="header.title">AI Medical Report</h1>
+                            <p class="ast-header-subtitle" data-i18n="header.subtitle">AI-driven health analysis and initial classification.</p>
+                            <div class="ast-header-timestamp">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span id="reportTimestamp">--</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ov-main-layout">
+                        <div class="ov-left-col">
+                            <div class="ov-photo-frame" id="photoFrame">
+                                <div class="ov-no-photo" id="noPhoto">
+                                    <i class="fas fa-user-large"></i>
+                                    <span data-i18n="label.noPhoto">No Photo</span>
+                                </div>
+                                <img id="photoImg" src="/camera/capture" hidden>
+                            </div>
+                        </div>
+                        <div class="ov-right-col">
+                            <div class="ov-top-identity">
+                                <span class="ov-hero-name" id="patientName">Patient Name</span>
+                                <span class="ov-hero-age" id="patientAge"><i class="fas fa-cake-candles"></i> -- years</span>
+                                <span class="ov-hero-id" id="patientID"><i class="fas fa-id-card"></i> ID: --</span>
+                            </div>
+                            <div class="ov-details-grid">
+                                <div class="ov-detail-item">
+                                    <span class="ov-label" data-i18n="label.date">Date</span>
+                                    <span class="ov-value" id="patientDate">--</span>
+                                </div>
+                                <div class="ov-detail-item">
+                                    <span class="ov-label" data-i18n="label.time">Time</span>
+                                    <span class="ov-value" id="patientTime">--</span>
+                                </div>
+                                <div class="ov-detail-item">
+                                    <span class="ov-label" data-i18n="label.gender">Gender</span>
+                                    <span class="ov-value" id="patientGender">--</span>
+                                </div>
+                                <div class="ov-detail-item">
+                                    <span class="ov-label" data-i18n="label.weight">Weight</span>
+                                    <span class="ov-value" id="patientWeight">--</span>
+                                </div>
+                                <div class="ov-detail-item">
+                                    <span class="ov-label" data-i18n="label.height">Height</span>
+                                    <span class="ov-value" id="patientHeight">--</span>
+                                </div>
+                                <div class="ov-detail-item">
+                                    <span class="ov-label" data-i18n="label.bloodType">Blood Type</span>
+                                    <span class="ov-value" id="patientBlood">--</span>
+                                </div>
+                                <div class="ov-detail-item">
+                                    <span class="ov-label" data-i18n="label.occupation">Occupation</span>
+                                    <span class="ov-value" id="patientOccupation">--</span>
+                                </div>
+                                <div class="ov-detail-item">
+                                    <span class="ov-label" data-i18n="label.phone">Phone</span>
+                                    <span class="ov-value" id="patientPhone">--</span>
+                                </div>
+                                <div class="ov-detail-item full-width">
+                                    <span class="ov-label" data-i18n="label.email">Email</span>
+                                    <span class="ov-value" id="patientEmail">--</span>
+                                </div>
+                                <div class="ov-detail-item full-width">
+                                    <span class="ov-label" data-i18n="label.address">Address</span>
+                                    <span class="ov-value" id="patientAddress">--</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="ov-card-title" data-i18n="title.healthProfile">Your Health Profile</h2>
+                    <div class="ov-conditions-inner">
+                        <div class="ov-health-list" id="healthConditions">
+                            <div class="ov-health-row">
+                                <span class="ov-health-category" data-i18n="label.chronic">Chronic:</span>
+                                <span class="ov-health-tags" id="chronicCond" data-i18n="label.noneReported">None reported</span>
+                            </div>
+                            <div class="ov-health-row">
+                                <span class="ov-health-category" data-i18n="label.allergies">Allergies:</span>
+                                <span class="ov-health-tags" id="allergiesCond" data-i18n="label.noneReported">None reported</span>
+                            </div>
+                            <div class="ov-health-row">
+                                <span class="ov-health-category" data-i18n="label.medications">Medications:</span>
+                                <span class="ov-health-tags" id="medicationsCond" data-i18n="label.noneReported">None reported</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="ov-card-title" data-i18n="title.capturedVitals">Captured Vitals</h2>
+                    <div class="ast-vitals-section">
+                        <div class="ast-vitals-list">
+
+                            <div class="ast-vital-box status-normal" id="vitalBP">
+                                <div class="ast-vital-row">
+                                    <div class="ast-vital-name">
+                                        <div class="ast-vital-icon-box"><i class="fas fa-gauge-high"></i></div>
+                                        <span data-i18n="label.bloodPressure">Blood Pressure</span>
+                                    </div>
+                                    <div class="ast-vital-val-group">
+                                        <span class="ast-vital-val" id="valBP">--/--</span>
+                                        <span class="ast-vital-unit">mmHg</span>
+                                    </div>
+                                    <div class="ast-vital-tags">
+                                        <span class="ast-vital-chip ref-chip">Ref: 120/80</span>
+                                        <span class="ast-vital-badge" id="badgeBP">WAITING</span>
+                                    </div>
+                                </div>
+                                <div class="ast-vital-progress-track"><div class="ast-vital-progress-bar" id="progressBP" style="width:0%"></div></div>
+                                <div class="ast-vital-advice" id="adviceBP"><i class="fas fa-circle-info"></i><span>Waiting for measurement...</span></div>
+                            </div>
+
+                            <div class="ast-vital-box status-normal" id="vitalHR">
+                                <div class="ast-vital-row">
+                                    <div class="ast-vital-name">
+                                        <div class="ast-vital-icon-box"><i class="fas fa-heartbeat"></i></div>
+                                        <span data-i18n="label.heartRate">Heart Rate</span>
+                                    </div>
+                                    <div class="ast-vital-val-group">
+                                        <span class="ast-vital-val" id="valHR">--</span>
+                                        <span class="ast-vital-unit">bpm</span>
+                                    </div>
+                                    <div class="ast-vital-tags">
+                                        <span class="ast-vital-chip ref-chip">Ref: 60-100</span>
+                                        <span class="ast-vital-badge" id="badgeHR">WAITING</span>
+                                    </div>
+                                </div>
+                                <div class="ast-vital-progress-track"><div class="ast-vital-progress-bar" id="progressHR" style="width:0%"></div></div>
+                                <div class="ast-vital-advice" id="adviceHR"><i class="fas fa-circle-info"></i><span>Waiting for measurement...</span></div>
+                            </div>
+
+                            <div class="ast-vital-box status-normal" id="vitalSPO2">
+                                <div class="ast-vital-row">
+                                    <div class="ast-vital-name">
+                                        <div class="ast-vital-icon-box"><i class="fas fa-lungs"></i></div>
+                                        <span data-i18n="label.oxygenSaturation">Oxygen Saturation</span>
+                                    </div>
+                                    <div class="ast-vital-val-group">
+                                        <span class="ast-vital-val" id="valSPO2">--</span>
+                                        <span class="ast-vital-unit">%</span>
+                                    </div>
+                                    <div class="ast-vital-tags">
+                                        <span class="ast-vital-chip ref-chip">Ref: 95-100</span>
+                                        <span class="ast-vital-badge" id="badgeSPO2">WAITING</span>
+                                    </div>
+                                </div>
+                                <div class="ast-vital-progress-track"><div class="ast-vital-progress-bar" id="progressSPO2" style="width:0%"></div></div>
+                                <div class="ast-vital-advice" id="adviceSPO2"><i class="fas fa-circle-info"></i><span>Waiting for measurement...</span></div>
+                            </div>
+
+                            <div class="ast-vital-box status-normal" id="vitalTemp">
+                                <div class="ast-vital-row">
+                                    <div class="ast-vital-name">
+                                        <div class="ast-vital-icon-box"><i class="fas fa-temperature-half"></i></div>
+                                        <span data-i18n="label.temperature">Temperature</span>
+                                    </div>
+                                    <div class="ast-vital-val-group">
+                                        <span class="ast-vital-val" id="valTemp">--</span>
+                                        <span class="ast-vital-unit">&deg;C</span>
+                                    </div>
+                                    <div class="ast-vital-tags">
+                                        <span class="ast-vital-chip ref-chip">Ref: 36.1-37.2</span>
+                                        <span class="ast-vital-badge" id="badgeTemp">WAITING</span>
+                                    </div>
+                                </div>
+                                <div class="ast-vital-progress-track"><div class="ast-vital-progress-bar" id="progressTemp" style="width:0%"></div></div>
+                                <div class="ast-vital-advice" id="adviceTemp"><i class="fas fa-circle-info"></i><span>Waiting for measurement...</span></div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="ast-ai-decision-layout">
+                        <div class="ast-overall-banner status-normal" id="overallBanner">
+                            <div class="ast-overall-icon"><i class="fas fa-robot"></i></div>
+                            <div class="ast-overall-text">
+                                <span class="ast-overall-title" data-i18n="title.aiClassification">AI General Classification</span>
+                                <span class="ast-overall-status" id="overallStatus">Analyzing...</span>
+                                <div class="ast-confidence-wrapper">
+                                    <span class="ast-conf-label" data-i18n="label.confidence">Confidence</span>
+                                    <div class="ast-conf-track"><div class="ast-conf-bar" id="confBar" style="width:0%"></div></div>
+                                    <span class="ast-conf-val" id="confVal">--%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ast-action-plan status-normal" id="actionPlan">
+                            <div class="ast-plan-title"><i class="fas fa-clipboard-list"></i> <span data-i18n="title.aiActionPlan">AI Action Plan</span></div>
+                            <div class="ast-plan-text" id="planText">Waiting for vitals data...</div>
+                        </div>
+                    </div>
+
+                    <div class="ast-health-tips-section">
+                        <h2 class="ast-tips-title"><i class="fas fa-lightbulb"></i> <span data-i18n="title.healthTips">Health Tips</span></h2>
+                        <div class="ast-tips-list" id="tipsList"></div>
+                    </div>
+
+                    <div class="ast-ai-disclaimer-box">
+                        <i class="fas fa-triangle-exclamation"></i>
+                        <span data-i18n="disclaimer">AI-Assisted Analysis - For reference only. Always consult a qualified healthcare professional.</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="ast-bottom-bar">
+                <div class="ast-bottom-row">
+                    <div class="ast-timer-section">
+                        <div class="ast-timer-box" id="timerBox">
+                            <div class="ast-timer-box-icon"><i class="fas fa-clock"></i></div>
+                            <div class="ast-timer-box-body">
+                                <div class="ast-timer-box-label" data-i18n="label.sessionTimer">Session Timer</div>
+                                <div class="ast-timer-box-msg" id="timerMsg" data-i18n="timer.review">You have 5 minutes to review your report</div>
+                                <div class="ast-timer-box-bar-track"><div class="ast-timer-box-bar" id="timerBar"></div></div>
+                            </div>
+                            <div class="ast-timer-box-value" id="timerValue">05:00</div>
+                        </div>
+                    </div>
+                    <div class="ast-email-section">
+                        <div class="ast-email-main-btn" id="emailToggle">
+                            <div class="ast-email-btn-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+                            <div class="ast-email-btn-text">
+                                <span class="ast-email-btn-title" data-i18n="email.sendReport">Send Report</span>
+                                <span class="ast-email-btn-sub" data-i18n="email.receivePDF">Receive PDF via Email</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-up ast-email-arrow"></i>
+                        </div>
+                        <div class="ast-email-dropdown" id="emailDropdown">
+                            <div class="ast-email-dropdown-header"><i class="fa-solid fa-paper-plane"></i> <span data-i18n="email.sendHealthReport">Send Health Report</span></div>
+                            <div class="ast-email-registered" id="emailRegistered">
+                                <div class="reg-icon"><i class="fa-solid fa-user"></i></div>
+                                <div class="reg-text">
+                                    <span class="reg-label" data-i18n="label.patientEmail">Patient Email</span>
+                                    <span class="reg-addr" id="regEmail" data-i18n="label.notRegistered">Not registered</span>
+                                </div>
+                                <i class="fa-solid fa-chevron-right reg-arrow"></i>
+                            </div>
+                            <div class="ast-email-divider"></div>
+                            <div class="ast-email-custom">
+                                <span class="custom-label" data-i18n="email.orEnterManually">Or enter email manually</span>
+                                <div class="custom-row">
+                                    <input type="email" id="emailInput" placeholder="email@example.com">
+                                    <button class="ast-send-custom-btn" id="emailSendBtn" data-i18n="email.send">Send</button>
+                                </div>
+                            </div>
+                            <div class="ast-email-status" id="emailStatus"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="/header/header.js"></script>
+    <script src="/Assessment/Assessment.js?v=146"></script>
+</body>
+</html>

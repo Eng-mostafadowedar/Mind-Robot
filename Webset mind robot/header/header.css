@@ -1,0 +1,784 @@
+/* =========================================
+   Header / Topbar - MindRobot
+   شكل الهيدر وهياكله - الألوان والخط بتاع master.css
+   ========================================= */
+
+/* =========================================
+   Topbar Container
+   ========================================= */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  height: 78px;
+  background: rgba(7, 10, 20, 0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(67, 229, 255, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  font-family: var(--app-font); /* من master */
+  gap: 16px;
+}
+
+html[data-theme="light"] .topbar {
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom-color: rgba(11, 16, 34, 0.08);
+}
+
+/* =========================================
+   Brand - اسم المشروع
+   ========================================= */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-shrink: 0;
+}
+
+.logo {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.logo-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent); /* من master */
+  animation: hdrDotPulse 2.4s ease infinite;
+}
+
+.logo-dot:nth-child(2) { animation-delay: 0.3s; }
+.logo-dot:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes hdrDotPulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.brand-title {
+  font-size: 38px; /* حجم خاص بالهيدر */
+  font-weight: 900;
+  color: var(--fg, #ffffff); /* أبيض لو متغير master مش شغال */
+  letter-spacing: 3px;
+  line-height: 1.1;
+  font-family: var(--app-font); /* من master */
+  text-shadow: 0 0 40px rgba(67, 229, 255, 0.18);
+}
+
+.brand-subtitle-wrap {
+  overflow: hidden;
+  max-width: 380px;
+}
+
+.brand-subtitle {
+  font-size: 16px; /* حجم خاص بالهيدر */
+  color: var(--accent, #43e5ff); /* سماوي لو متغير master مش شغال */
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  line-height: 1.3;
+  font-family: var(--app-font); /* من master */
+  display: inline-block;
+  animation: subtitleSlide 12s ease-in-out infinite;
+  white-space: nowrap;
+}
+
+/* ✅ الأنيميشن أبطأ - 12 ثانية بدل 6 */
+@keyframes subtitleSlide {
+  0%, 35% { opacity: 1; transform: translateY(0); }
+  40%, 45% { opacity: 0; transform: translateY(-6px); }
+  50%, 85% { opacity: 1; transform: translateY(0); }
+  90%, 100% { opacity: 0; transform: translateY(6px); }
+}
+
+.brand-subtitle-line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(67, 229, 255, 0.30), transparent);
+  margin-top: 5px;
+  border-radius: 2px;
+  animation: lineGlow 4s ease-in-out infinite;
+}
+
+@keyframes lineGlow {
+  0%, 100% { opacity: 0.3; transform: scaleX(0.8); }
+  50% { opacity: 1; transform: scaleX(1); }
+}
+
+/* =========================================
+   Date & Time - توقيت مصر (الألوان مكتوبة يدوي عشان تبان فكل الأحوال)
+   ========================================= */
+.topbar-datetime {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 22px;
+  border-radius: 14px;
+  background: rgba(67, 229, 255, 0.05);
+  border: 1px solid rgba(67, 229, 255, 0.10);
+  flex-shrink: 0;
+  visibility: visible !important; /* إجبارها تبان */
+  opacity: 1 !important; /* إجبارها تبان */
+}
+
+html[data-theme="light"] .topbar-datetime {
+  background: rgba(67, 229, 255, 0.04);
+  border-color: rgba(11, 16, 34, 0.08);
+}
+
+.topbar-date-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-right: 16px;
+  border-right: 1px solid rgba(67, 229, 255, 0.12);
+}
+
+.topbar-date-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(67, 229, 255, 0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #43e5ff; /* سماوي فاجر */
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.topbar-date-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.topbar-date-value {
+  font-size: 14px;
+  color: #ffffff; /* أبيض فاتح مبيختفيش */
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  font-family: var(--app-font); /* من master */
+  white-space: nowrap;
+}
+
+.topbar-date-label {
+  font-size: 11px;
+  color: #94a3b8; /* رمادي فاتح مبيختفيش */
+  font-weight: 600;
+  font-family: var(--app-font); /* من master */
+}
+
+.topbar-time-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topbar-time-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(67, 229, 255, 0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #43e5ff; /* سماوي فاجر */
+  font-size: 16px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.topbar-time-icon::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 12px;
+  background: #43e5ff; /* سماوي فاجر */
+  border-radius: 2px;
+  top: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+  animation: hdrSecondHand 60s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes hdrSecondHand {
+  from { transform: translate(-50%, -100%) rotate(0deg); }
+  to   { transform: translate(-50%, -100%) rotate(360deg); }
+}
+
+.topbar-time-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.topbar-time-value {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  font-family: var(--app-font); /* من master */
+}
+
+.topbar-time-hm {
+  font-size: 18px;
+  color: #ffffff; /* أبيض فاتح مبيختفيش */
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  font-family: var(--app-font); /* من master */
+}
+
+.topbar-time-sec {
+  font-size: 11px;
+  color: #43e5ff; /* سماوي فاجر مبيختفيش */
+  font-weight: 700;
+  min-width: 20px;
+  animation: hdrSecBlink 1s step-end infinite;
+}
+
+@keyframes hdrSecBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.topbar-time-period {
+  font-size: 11px;
+  color: #43e5ff; /* سماوي فاجر */
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-left: 2px;
+}
+
+.topbar-time-label {
+  font-size: 11px;
+  color: #94a3b8; /* رمادي فاتح مبيختفيش */
+  font-weight: 600;
+  font-family: var(--app-font); /* من master */
+}
+
+/* =========================================
+   Topbar Actions
+   ========================================= */
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.topbar-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-family: var(--app-font); /* من master */
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.10);
+  color: var(--muted, #94a3b8); /* رمادي */
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(67, 229, 255, 0.25);
+  color: var(--fg, #ffffff); /* أبيض */
+}
+
+html[data-theme="light"] .btn-secondary {
+  background: rgba(255, 255, 255, 0.70);
+  border-color: rgba(11, 16, 34, 0.10);
+  color: rgba(75, 90, 128, 0.80);
+}
+
+html[data-theme="light"] .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.90);
+  border-color: rgba(67, 229, 255, 0.30);
+  color: var(--fg, #0b1022); /* أسود في المود الفاتح */
+}
+
+/* زر اللغة */
+.btn-lang {
+  background: rgba(67, 229, 255, 0.08);
+  border-color: rgba(67, 229, 255, 0.20);
+  color: #43e5ff; /* سماوي فاجر */
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  min-width: 48px;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-lang:hover {
+  background: rgba(67, 229, 255, 0.16);
+  border-color: rgba(67, 229, 255, 0.40);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(67, 229, 255, 0.12);
+}
+
+.btn-lang:active {
+  transform: scale(0.92);
+}
+
+.btn-lang-text {
+  display: inline-block;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
+}
+
+.btn-lang-text.switching {
+  transform: rotateX(90deg) scale(0.8);
+  opacity: 0;
+}
+
+.btn-lang::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(67, 229, 255, 0.15), rgba(155, 123, 255, 0.10));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 12px;
+}
+
+.btn-lang:hover::after {
+  opacity: 1;
+}
+
+html[data-theme="light"] .btn-lang {
+  background: rgba(67, 229, 255, 0.08);
+  border-color: rgba(67, 229, 255, 0.20);
+  color: #0891b2;
+}
+
+/* زر SOS */
+.btn-danger {
+  background: rgba(255, 61, 113, 0.12);
+  border-color: rgba(255, 61, 113, 0.30);
+  color: #ff3d71; /* أحمر فاجر */
+  font-weight: 800;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-danger:hover {
+  background: rgba(255, 61, 113, 0.22);
+  border-color: rgba(255, 61, 113, 0.50);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(255, 61, 113, 0.15);
+}
+
+.btn-danger:active {
+  transform: scale(0.96);
+}
+
+html[data-theme="light"] .btn-danger {
+  background: rgba(255, 61, 113, 0.10);
+  border-color: rgba(255, 61, 113, 0.25);
+  color: #d90429;
+}
+
+.sos-pulse {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff3d71; /* أحمر فاجر */
+  animation: sosPulse 1.5s ease infinite;
+  box-shadow: 0 0 8px rgba(255, 61, 113, 0.5);
+  flex-shrink: 0;
+}
+
+@keyframes sosPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.7); }
+}
+
+.btn-danger::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 14px;
+  border: 2px solid rgba(255, 61, 113, 0.20);
+  animation: sosRing 2s ease infinite;
+  pointer-events: none;
+}
+
+@keyframes sosRing {
+  0% { opacity: 0; transform: scale(0.95); }
+  50% { opacity: 1; transform: scale(1.02); }
+  100% { opacity: 0; transform: scale(1.05); }
+}
+
+.sos-number {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: rgba(255, 61, 113, 0.70);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  direction: ltr;
+}
+
+/* =========================================
+   SOS Calling Overlay
+   ========================================= */
+.hdr-sos-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(7, 10, 20, 0.85);
+  backdrop-filter: blur(12px);
+}
+
+.hdr-sos-overlay.active {
+  display: flex;
+  animation: hdrSosIn 0.3s ease;
+}
+
+@keyframes hdrSosIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.hdr-sos-card {
+  background: rgba(11, 18, 32, 0.98);
+  border: 2px solid rgba(255, 61, 113, 0.40);
+  border-radius: 24px;
+  padding: 36px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  font-family: var(--app-font); /* من master */
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 60px rgba(255, 61, 113, 0.12);
+  animation: hdrSosCardIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+html[data-theme="light"] .hdr-sos-card {
+  background: rgba(255, 255, 255, 0.98);
+  border-color: rgba(255, 61, 113, 0.35);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 40px rgba(255, 61, 113, 0.08);
+}
+
+@keyframes hdrSosCardIn {
+  from { opacity: 0; transform: scale(0.8) translateY(30px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.hdr-sos-ring {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 61, 113, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  position: relative;
+  animation: hdrSosRingPulse 1.5s ease infinite;
+}
+
+@keyframes hdrSosRingPulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 61, 113, 0.30); }
+  70% { box-shadow: 0 0 0 20px rgba(255, 61, 113, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 61, 113, 0); }
+}
+
+.hdr-sos-ring i {
+  font-size: 32px;
+  color: #ff3d71; /* أحمر فاجر */
+  animation: hdrPhoneShake 0.5s ease infinite;
+}
+
+@keyframes hdrPhoneShake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(15deg); }
+  75% { transform: rotate(-15deg); }
+}
+
+.hdr-sos-title {
+  font-size: 26px;
+  font-weight: 900;
+  color: #ff3d71; /* أحمر فاجر */
+  margin-bottom: 6px;
+}
+
+.hdr-sos-number-display {
+  font-size: 18px;
+  font-weight: 800;
+  color: #ffffff; /* أبيض */
+  margin-bottom: 8px;
+  direction: ltr;
+  letter-spacing: 2px;
+}
+
+.hdr-sos-hint {
+  font-size: 14px;
+  color: #94a3b8; /* رمادي */
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.hdr-sos-btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.hdr-sos-btn {
+  padding: 12px 28px;
+  border-radius: 14px;
+  font-family: var(--app-font); /* من master */
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hdr-sos-btn-call {
+  background: linear-gradient(135deg, rgba(255, 61, 113, 0.25), rgba(255, 61, 113, 0.12));
+  border-color: rgba(255, 61, 113, 0.50);
+  color: #ff3d71; /* أحمر فاجر */
+  animation: hdrCallPulse 2s ease infinite;
+}
+
+@keyframes hdrCallPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 61, 113, 0.30); }
+  50% { box-shadow: 0 0 0 8px rgba(255, 61, 113, 0); }
+}
+
+.hdr-sos-btn-call:hover {
+  background: linear-gradient(135deg, rgba(255, 61, 113, 0.35), rgba(255, 61, 113, 0.18));
+  transform: translateY(-2px);
+}
+
+.hdr-sos-btn-cancel {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #94a3b8; /* رمادي */
+}
+
+.hdr-sos-btn-cancel:hover {
+  background: rgba(255, 255, 255, 0.10);
+  color: #ffffff; /* أبيض */
+}
+
+html[data-theme="light"] .hdr-sos-btn-cancel {
+  background: rgba(11, 16, 34, 0.06);
+  border-color: rgba(11, 16, 34, 0.12);
+}
+
+/* =========================================
+   ✅✅ Admin Lock System ✅✅
+   ========================================= */
+.admin-lock-btn { 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px; 
+  background: rgba(255, 61, 113, 0.10); 
+  border: 1px solid rgba(255, 61, 113, 0.25); 
+  color: #ff3d71; 
+  cursor: pointer; 
+  transition: all 0.3s ease;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.admin-lock-btn:hover { 
+  background: rgba(255, 61, 113, 0.20); 
+  box-shadow: 0 4px 12px rgba(255, 61, 113, 0.15);
+}
+
+.admin-lock-btn.is-unlocked { 
+  background: rgba(16, 185, 129, 0.10);
+  border-color: rgba(16, 185, 129, 0.25); 
+  color: #10b981; 
+}
+.admin-lock-btn.is-unlocked:hover { 
+  background: rgba(16, 185, 129, 0.20); 
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+}
+
+.admin-modal { 
+  display: none; 
+  position: fixed; 
+  top: 0; left: 0; 
+  width: 100%; height: 100%; 
+  background: rgba(7, 10, 20, 0.85); 
+  z-index: 10000; /* أعلى من السوس وأي حاجة */
+  justify-content: center; 
+  align-items: center;
+  backdrop-filter: blur(12px);
+}
+.admin-modal.is-visible { display: flex; }
+
+.admin-modal-content { 
+  background: rgba(11, 18, 32, 0.98); 
+  padding: 30px; 
+  border-radius: 24px; 
+  text-align: center; 
+  border: 1px solid rgba(67, 229, 255, 0.15); 
+  width: 360px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(67, 229, 255, 0.08);
+  animation: hdrSosCardIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* استخدمنا نفس الانيميشن */
+}
+html[data-theme="light"] .admin-modal-content {
+  background: rgba(255, 255, 255, 0.98);
+  border-color: rgba(11, 16, 34, 0.10);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.admin-modal-content h3 { 
+  margin: 0 0 10px 0; 
+  color: var(--accent, #43e5ff); 
+  font-size: 22px; 
+  font-weight: 900;
+}
+.admin-modal-content h3 i { margin-left: 8px; }
+.admin-modal-content p { 
+  color: var(--muted, #94a3b8); 
+  font-size: 14px; 
+  margin: 0 0 20px 0; 
+  font-weight: 600;
+}
+
+.admin-modal-content input { 
+  width: 100%; 
+  padding: 14px; 
+  margin-bottom: 20px; 
+  border-radius: 12px; 
+  border: 1px solid rgba(67, 229, 255, 0.20); 
+  background: rgba(255, 255, 255, 0.03); 
+  color: var(--fg, #ffffff); 
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 4px;
+  font-family: var(--app-font);
+  outline: none;
+  transition: 0.3s;
+  box-sizing: border-box;
+}
+.admin-modal-content input:focus { 
+  border-color: var(--accent, #43e5ff); 
+  box-shadow: 0 0 15px rgba(67, 229, 255, 0.15);
+}
+html[data-theme="light"] .admin-modal-content input {
+  background: rgba(11, 16, 34, 0.03);
+  border-color: rgba(11, 16, 34, 0.15);
+  color: #0b1022;
+}
+
+.admin-modal-actions { display: flex; gap: 12px; justify-content: center; }
+.admin-btn { 
+  padding: 12px 24px; 
+  border-radius: 12px; 
+  border: none; 
+  cursor: pointer; 
+  font-weight: 800; 
+  font-size: 15px; 
+  transition: all 0.2s ease;
+  font-family: var(--app-font);
+  flex: 1;
+}
+.unlock-btn { 
+  background: linear-gradient(135deg, rgba(67, 229, 255, 0.25), rgba(67, 229, 255, 0.10));
+  border: 1px solid rgba(67, 229, 255, 0.40);
+  color: #43e5ff; 
+}
+.unlock-btn:hover { background: rgba(67, 229, 255, 0.30); transform: translateY(-1px); }
+.cancel-btn { 
+  background: rgba(255, 255, 255, 0.04); 
+  color: var(--muted, #94a3b8); 
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.cancel-btn:hover { background: rgba(255, 255, 255, 0.08); color: var(--fg); }
+html[data-theme="light"] .cancel-btn { background: rgba(11, 16, 34, 0.04); border-color: rgba(11, 16, 34, 0.08); }
+
+.admin-error { 
+  color: #ff3d71; 
+  font-size: 13px; 
+  margin: 15px 0 0 0; 
+  display: none; 
+  font-weight: 800; 
+  animation: hdrPhoneShake 0.4s ease;
+}
+
+/* ✅✅ حالة قفل التبويبات (ظاهرة وعادية بس تطلب باسورد لما تتداس) ✅✅ */
+.workspace-nav.is-locked { 
+  opacity: 1; /* يبان طبيعي مفيش تطميس */
+  filter: none; /* مفيش طمس */
+  user-select: none; 
+}
+
+.workspace-nav.is-locked .workspace-tab {
+  cursor: not-allowed; /* يظهر شكل زرارة ممنوع لما الماوس يعدى عليها */
+  pointer-events: auto; /* يسمح بالضغط عشان الـ JS يختطفه ويفتح الباسورد */
+}
+
+/* لما الماوس يعدى على التبويب المقفول يعمل تأثير أحمر تنبيهي بسيط */
+.workspace-nav.is-locked .workspace-tab:hover {
+  background: rgba(255, 61, 113, 0.08); /* لون أحمر خفيف */
+  border-color: rgba(255, 61, 113, 0.15);
+  color: #ff3d71 !important;
+}
+
+/* =========================================
+   RTL
+   ========================================= */
+html[dir="rtl"] .topbar { direction: rtl; }
+html[dir="rtl"] .brand { direction: rtl; }
+html[dir="rtl"] .topbar-actions { direction: rtl; }
+html[dir="rtl"] .topbar-datetime { direction: rtl; }
+html[dir="rtl"] .topbar-date-block { padding-right: 0; padding-left: 16px; border-right: none; border-left: 1px solid rgba(67, 229, 255, 0.12); }
+html[dir="rtl"] .topbar-time-period { margin-left: 0; margin-right: 2px; }
+html[dir="rtl"] .admin-modal-content h3 i { margin-left: 0; margin-right: 8px; }
+
+/* =========================================
+   Responsive
+   ========================================= */
+@media (max-width: 900px) {
+  .topbar { padding: 0 14px; gap: 10px; }
+  .brand-subtitle-wrap { display: none; }
+  .brand-title { font-size: 28px !important; }
+  .topbar-datetime { padding: 4px 12px; gap: 10px; }
+  .topbar-date-icon, .topbar-time-icon { width: 30px; height: 30px; font-size: 14px; }
+  .topbar-time-hm { font-size: 16px; }
+  .sos-number { display: none; }
+}
+
+@media (max-width: 640px) {
+  .topbar { flex-wrap: wrap; height: auto; padding: 10px 12px; gap: 8px; }
+  .brand-title { font-size: 24px !important; }
+  .topbar-datetime { order: 3; width: 100%; justify-content: center; }
+  .topbar-actions { order: 2; gap: 6px; }
+  .topbar-actions .btn { padding: 6px 10px; font-size: 11px; }
+  .admin-lock-btn { width: 36px; height: 36px; font-size: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
