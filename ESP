@@ -1,0 +1,96 @@
+import time
+import board
+from adafruit_pca9685 import PCA9685
+
+i2c = board.I2C()
+pwm = PCA9685(i2c)
+pwm.frequency = 50
+
+TICK = 0.03 
+
+# ===== ?????? ?????? ????? (Channels 5 -> 8) =====
+# ?? ???? ?? ????? ???? ??? ??? inv ?????
+motors = [
+    {"ch": 5, "inv": False, "current": 0, "target": 0, "step": 1, "name": "L_Arm"},
+    {"ch": 6, "inv": True,  "current": 0, "target": 0, "step": 1, "name": "L_Claw"},
+    {"ch": 7, "inv": True,  "current": 0, "target": 0, "step": 2, "name": "L_Fingers_H"},
+    {"ch": 8, "inv": True,  "current": 0, "target": 0, "step": 2, "name": "L_Fingers_L"},
+]
+
+def move_servo(ch, angle, inv):
+    if inv:
+        angle = 180 - angle
+    pulse_min = 1638  
+    pulse_max = 8191  
+    value = int(pulse_min + (pulse_max - pulse_min) * (angle / 180.0))
+    pwm.channels[ch].duty_cycle = value
+
+def go_to_targets():
+    while True:
+        all_reached = True
+        for motor in motors:
+            if motor["current"] != motor["target"]:
+                all_reached = False
+                if motor["current"] < motor["target"]:
+                    motor["current"] += motor["step"]
+                    if motor["current"] > motor["target"]:
+                        motor["current"] = motor["target"]
+                elif motor["current"] > motor["target"]:
+                    motor["current"] -= motor["step"]
+                    if motor["current"] < motor["target"]:
+                        motor["current"] = motor["target"]
+                move_servo(motor["ch"], motor["current"], motor["inv"])
+        time.sleep(TICK)
+        if all_reached:
+            break
+
+# ==========================================
+# ??? ????? ??????? ???? ??????? ???????
+# ==========================================
+print("Left Arm Sequence Started... (Press Ctrl+C to stop)")
+
+try:
+    while True:
+        
+        # ?????? 1: ??? ???????
+        print("Step 1: Opening Fingers...")
+        motors[2]["target"] = 180 # Fingers_H
+        motors[3]["target"] = 180 # Fingers_L
+        go_to_targets()
+        time.sleep(0.5)
+
+        # ?????? 2: ?? ???? ??????
+        print("Step 2: Moving Arm...")
+        motors[0]["target"] = 120 # Arm
+        go_to_targets()
+        time.sleep(0.5)
+
+        # ?????? 3: ?? ????
+        print("Step 3: Rotating Claw...")
+        motors[1]["target"] = 90 # Claw
+        go_to_targets()
+        time.sleep(0.5)
+
+        # ?????? 4: ??? ???????
+        print("Step 4: Closing Fingers...")
+        motors[2]["target"] = 0
+        motors[3]["target"] = 0
+        go_to_targets()
+        time.sleep(1)
+
+        # ?????? 5: ??? ???? ?????
+        print("Step 5: Returning to Zero...")
+        for m in motors:
+            m["target"] = 0
+        go_to_targets()
+        
+        print("Sequence Finished! Restarting...\n")
+        time.sleep(2)
+
+except KeyboardInterrupt:
+    print("\nStopping Robot...")
+
+finally:
+    for m in motors:
+        pwm.channels[m["ch"]].duty_cycle = 0
+    print("Stopped Safely.")
